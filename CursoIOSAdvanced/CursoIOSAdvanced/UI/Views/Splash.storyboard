@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NHd-8K-RZ2">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Splash View Controller-->
+        <scene sceneID="7mm-9y-8a5">
+            <objects>
+                <viewController id="NHd-8K-RZ2" customClass="SplashViewController" customModule="CursoIOSAdvanced" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TGC-RG-gOi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-logo" translatesAutoresizingMaskIntoConstraints="NO" id="up3-Dd-Nl9">
+                                <rect key="frame" x="57" y="100" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="5Nx-eX-1np"/>
+                                    <constraint firstAttribute="width" constant="300" id="FYX-ep-IW7"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="52L-ec-pj9">
+                                <rect key="frame" x="57" y="500" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="JlF-BQ-Kmi"/>
+                                    <constraint firstAttribute="width" constant="300" id="KT3-8e-d7b"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="52L-ec-pj9" firstAttribute="centerX" secondItem="TGC-RG-gOi" secondAttribute="centerX" id="3mS-Dt-hPc"/>
+                            <constraint firstItem="up3-Dd-Nl9" firstAttribute="centerX" secondItem="TGC-RG-gOi" secondAttribute="centerX" id="Bec-ue-g8p"/>
+                            <constraint firstItem="up3-Dd-Nl9" firstAttribute="top" secondItem="TGC-RG-gOi" secondAttribute="top" constant="100" id="its-L2-eG5"/>
+                            <constraint firstItem="52L-ec-pj9" firstAttribute="top" secondItem="up3-Dd-Nl9" secondAttribute="bottom" constant="100" id="yU5-Sc-E7J"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zY6-rw-0dm"/>
+                    </view>
+                    <connections>
+                        <outlet property="mViewLoading" destination="52L-ec-pj9" id="AlM-kG-fmc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1TJ-lk-PHr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="35" y="-31"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic-logo" width="341.33334350585938" height="341.33334350585938"/>
+    </resources>
+</document>
