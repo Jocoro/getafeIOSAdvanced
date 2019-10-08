@@ -18,7 +18,7 @@ class UserDAO: Object {
     @objc dynamic var longitude : String?
     @objc dynamic var email : String?
     @objc dynamic var uuid : String = ""
-    @objc dynamic var birthdate : String?
+    @objc dynamic var birthdate : Date?
     @objc dynamic var avatar : String?
     
    
@@ -31,7 +31,7 @@ class UserDAO: Object {
                      lastname: String? = nil,
                      email: String? = nil,
                      gender: String? = nil,
-                     birthdate: String? = nil,
+                     birthdate: Date? = nil,
                      country: String? = nil,
                      latitude:  String? = nil,
                      longitude: String? = nil){
