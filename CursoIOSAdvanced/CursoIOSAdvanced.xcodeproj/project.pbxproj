@@ -37,6 +37,7 @@
 		D9844EA1234667CE009A76E5 /* PersonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9844E9F234667CE009A76E5 /* PersonCollectionViewCell.xib */; };
 		D985E6BD23464B1900C95E38 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D985E6BC23464B1900C95E38 /* Splash.storyboard */; };
 		D985E6BF2346512600C95E38 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D985E6BE2346512600C95E38 /* UsersViewController.swift */; };
+		D99BDA19234E5136003B06E4 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = D99BDA18234E5136003B06E4 /* users.json */; };
 		D9D38AA2234CEEAD005B8659 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D38AA1234CEEAD005B8659 /* User.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		D9844E9F234667CE009A76E5 /* PersonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCollectionViewCell.xib; sourceTree = "<group>"; };
 		D985E6BC23464B1900C95E38 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		D985E6BE2346512600C95E38 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		D99BDA18234E5136003B06E4 /* users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
 		D9C22F5423465831009CB68B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9D38AA1234CEEAD005B8659 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -214,6 +216,7 @@
 		D985E6B72346446800C95E38 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D99BDA18234E5136003B06E4 /* users.json */,
 				D90BD66A234794F100A1FF35 /* loading.json */,
 				D90E02C1234523F900E45C38 /* Assets.xcassets */,
 			);
@@ -339,6 +342,7 @@
 				D9844EA1234667CE009A76E5 /* PersonCollectionViewCell.xib in Resources */,
 				D92ACD28234662A10022ACE0 /* PersonTableViewCell.xib in Resources */,
 				D90E02C2234523F900E45C38 /* Assets.xcassets in Resources */,
+				D99BDA19234E5136003B06E4 /* users.json in Resources */,
 				D90BD66B234794F100A1FF35 /* loading.json in Resources */,
 				D90E02C0234523F000E45C38 /* Main.storyboard in Resources */,
 				D985E6BD23464B1900C95E38 /* Splash.storyboard in Resources */,

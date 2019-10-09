@@ -17,7 +17,7 @@ class DataManager {
     
     func users(completion: @escaping ServiceCompletion){
         DispatchQueue.global(qos: .background).async { [weak self] in
-            if let usersUI = self?.usersUI(), usersUI.count > 0 {
+            if let usersUI = self?.getUsersUIFromDB(), usersUI.count > 0 {
                 // Devolver userDB
                 //Conviertes listado de users de la base de dato al modelo de user para las vistas
                 
@@ -55,7 +55,7 @@ class DataManager {
                     //guardar los datos
                     self?.save(users: users)
                     
-                    let usersUI = self?.usersUI()
+                    let usersUI = self?.getUsersUIFromDB()
                     DispatchQueue.main.async {
                         completion(.success(data: usersUI))
                     }
@@ -79,7 +79,7 @@ class DataManager {
                    }
                    return
                }
-               let user = self?.getUserUI(userDAO: userDAO)
+               let user = self?.getUserUI(from: userDAO)
                DispatchQueue.main.async {
                    completion(.success(data: user))
                }
@@ -115,11 +115,12 @@ class DataManager {
                              birthdate: user.dob?.date,
                              country: user.location?.country,
                              latitude: user.location?.coordinates?.latitude,
-                             longitude: user.location?.coordinates?.longitude)
+                             longitude: user.location?.coordinates?.longitude,
+                             nationality : user.nat)
         DataBaseManager.shared.save(user: userDB)
     }
  
-    private func getUserUI(userDAO: UserDAO) -> User {
+    private func getUserUI(from userDAO: UserDAO) -> User {
         
         return User(id: userDAO.uuid,
                     avatar: userDAO.avatar,
@@ -127,16 +128,17 @@ class DataManager {
                     lastName: userDAO.lastName,
                     email: userDAO.email,
                     birthdate: userDAO.birthdate,
-                    country: userDAO.country)
+                    country: userDAO.country,
+                    nationality: userDAO.nationality)
         
     }
   
-    private func getUsersUI(usersDAO: Array<UserDAO>) -> Array<User> {
-        return usersDAO.compactMap { getUserUI(userDAO: $0)
+    private func getUsersUI(from usersDAO: Array<UserDAO>) -> Array<User> {
+        return usersDAO.compactMap { getUserUI(from: $0)
         }
     }
-    private func usersUI() -> Array<User>{
+    private func getUsersUIFromDB() -> Array<User>{
         let usersDAO = usersDB()
-       return getUsersUI(usersDAO: usersDAO)
+       return getUsersUI(from: usersDAO)
     }
 }

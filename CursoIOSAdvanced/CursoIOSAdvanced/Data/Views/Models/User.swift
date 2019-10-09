@@ -22,12 +22,11 @@ class User {
         return "\(String(describing: firstName)) \(String(describing: lastName))"
     }
     var age: Int {
-        if let birthdate = birthdate{
-        return Calendar.current.dateComponents([.year], from: birthdate, to: Date()).year ?? 0
+        guard let birthdate = birthdate,
+            let age = Calendar.current.dateComponents([.year], from: birthdate, to: Date()).year else{
+        return 0
         }
-        else{
-            return 0
-        }
+        return age
     }
     
     init(id: String, avatar: String? = nil, firstName: String? = nil, lastName: String? = nil,

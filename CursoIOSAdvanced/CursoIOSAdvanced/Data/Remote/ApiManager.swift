@@ -22,8 +22,24 @@ class ApiManager {
     
     func fetchUsers(completion: ServiceCompletion){
         //Llamar al servicio
-        
+       
+    
         //Devolver datos
         completion(.success(data: "BIIIEN"))
     }
+    private func testLoadUsersJson() -> UsersDTO? {
+        if let path = Bundle.main.path(forResource: "users", ofType: "json"){
+            do{
+                let jsonData = try Data(contentsOf: URL(fileURLWithPath: path))
+            }
+            catch{
+                
+            }
+        }
+        return UsersDTO()
+    }
 }
+
+
+// Datos de prueba
+

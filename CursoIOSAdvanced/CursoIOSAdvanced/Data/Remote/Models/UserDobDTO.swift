@@ -9,6 +9,7 @@
 import Foundation
 
 struct UserDobDTO: Codable {
+    //hay que decirle como cambiar de tipo string a date
     let date : Date?
     let age : Int?
 }

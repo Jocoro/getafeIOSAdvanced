@@ -12,7 +12,7 @@ struct UserLocationDTO: Codable {
     let city : String?
     let state : String?
     let country : String?
-    let postcode : Int?
+    //let postcode : Int?
     let coordinates : CoordinatesDTO?
     let timezone : TimezoneDTO?
     
