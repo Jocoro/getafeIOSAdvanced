@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 class PersonCollectionViewCell: UICollectionViewCell {
     static let cellIdentifier = String(describing: PersonCollectionViewCell.self)
     
@@ -29,7 +30,8 @@ class PersonCollectionViewCell: UICollectionViewCell {
         shadowView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
     }
     func configureCell(image: String? = nil, title: String? = nil){
-        imageInCell.image = UIImage(named: image ?? "")
+        let url = URL(string: image ?? "")
+        imageInCell.kf.setImage(with: url)
         name.text = title
         
         

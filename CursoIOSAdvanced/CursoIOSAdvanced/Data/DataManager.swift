@@ -16,6 +16,7 @@ class DataManager {
     
     
     func users(completion: @escaping ServiceCompletion){
+        
         DispatchQueue.global(qos: .background).async { [weak self] in
             if let usersUI = self?.getUsersUIFromDB(), usersUI.count > 0 {
                 // Devolver userDB
@@ -141,4 +142,14 @@ class DataManager {
         let usersDAO = usersDB()
        return getUsersUI(from: usersDAO)
     }
+}
+extension DataManager {
+    //Opciones por defecto
+    func getDefaultOptions() -> Int {
+           return DataBaseManager.shared.getDefaultOptions()
+             }
+       func changeDefaultOptions(){
+           DataBaseManager.shared.changeDefaultOptions()
+          
+       }
 }

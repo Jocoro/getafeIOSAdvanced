@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 class PersonTableViewCell: UITableViewCell {
     
     static let cellIdentifier = String(describing: PersonTableViewCell.self)
@@ -28,9 +29,15 @@ class PersonTableViewCell: UITableViewCell {
         
     }
     func configureCell(image: String? = nil, name: String? = nil, email: String? = nil){
-        imageInCell.image = UIImage(named: image ?? "")
+        let url = URL(string: image ?? "")
+        imageInCell.kf.setImage(with: url)
         self.name.text = name
         self.email.text = email
         
     }
+    class func createCell() -> PersonTableViewCell? {
+           let nib = UINib(nibName: "CustomCell", bundle: nil)
+           let cell = nib.instantiate(withOwner: self, options: nil).last as? PersonTableViewCell
+           return cell
+       }
 }

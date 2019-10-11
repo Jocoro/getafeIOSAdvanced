@@ -40,3 +40,21 @@ class DataBaseManager{
         }
     }
 }
+extension DataBaseManager {
+    // Opciones por defecto
+    func getDefaultOptions() -> Int {
+        let preferences = UserDefaults.standard
+        return preferences.integer(forKey: "SegmentedMode")
+          }
+    func changeDefaultOptions(){
+        let preferences = UserDefaults.standard
+        let actualValue = preferences.integer(forKey: "SegmentedMode")
+        switch actualValue {
+        case 0:
+        preferences.set(1, forKey: "SegmentedMode")
+        default:
+        preferences.set(0, forKey: "SegmentedMode")
+        }
+       
+    }
+}
