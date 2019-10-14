@@ -28,21 +28,38 @@
                                             <constraint firstAttribute="width" constant="80" id="SmY-Dv-HEW"/>
                                         </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cxe-T3-dMt">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cxe-T3-dMt">
                                         <rect key="frame" x="88" y="0.0" width="286" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre Completo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDh-sP-VO3">
-                                                <rect key="frame" x="0.0" y="0.0" width="286" height="46"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="286" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correo Electronico" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQh-kg-9gD">
-                                                <rect key="frame" x="0.0" y="54" width="286" height="46"/>
+                                                <rect key="frame" x="0.0" y="34.5" width="286" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="dTm-zd-ZWb">
+                                                <rect key="frame" x="0.0" y="69" width="286" height="31"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFk-O7-BGV">
+                                                        <rect key="frame" x="0.0" y="0.0" width="143" height="31"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vdy-6r-Eg5">
+                                                        <rect key="frame" x="143" y="0.0" width="143" height="31"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -65,6 +82,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="age" destination="Vdy-6r-Eg5" id="Pja-aJ-WPI"/>
+                <outlet property="birthdate" destination="WFk-O7-BGV" id="6UH-c3-41f"/>
                 <outlet property="email" destination="YQh-kg-9gD" id="8Ri-ae-Cxc"/>
                 <outlet property="imageInCell" destination="9Kz-kk-WhV" id="wj7-hN-M7K"/>
                 <outlet property="name" destination="wDh-sP-VO3" id="vLb-5Z-AOO"/>

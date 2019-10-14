@@ -12,10 +12,18 @@ import RealmSwift
 class DataBaseManager{
     static let shared = DataBaseManager()
     private init(){}
+   
+    
+    
+    var users: Results<UserDAO> {
+           return realm.objects(UserDAO.self)
+       }
     
     //MARK: -Properties
     // Get the default Realm database
-    private let realm = try! Realm()
+     private var realm: Realm {
+           return try! Realm()
+       }
     
     func save(user: UserDAO){
         try! realm.write {
@@ -23,9 +31,7 @@ class DataBaseManager{
         }
     }
     
-    func users() -> Results<UserDAO> {
-        return realm.objects(UserDAO.self)
-    }
+   
     func user(id: String) -> UserDAO? {
         return realm.object(ofType: UserDAO.self, forPrimaryKey: id)
     }
@@ -41,20 +47,16 @@ class DataBaseManager{
     }
 }
 extension DataBaseManager {
+    var segmentMode: String {
+        return "segmentMode"
+    }
     // Opciones por defecto
-    func getDefaultOptions() -> Int {
-        let preferences = UserDefaults.standard
-        return preferences.integer(forKey: "SegmentedMode")
-          }
-    func changeDefaultOptions(){
-        let preferences = UserDefaults.standard
-        let actualValue = preferences.integer(forKey: "SegmentedMode")
-        switch actualValue {
-        case 0:
-        preferences.set(1, forKey: "SegmentedMode")
-        default:
-        preferences.set(0, forKey: "SegmentedMode")
-        }
-       
+    var getDefaultSegment: Int {
+        return UserDefaults.standard.integer(forKey: segmentMode)
+    }
+    
+    func saveDefaultSegment(option: Int){
+        UserDefaults.standard.set(option, forKey: segmentMode)
+        
     }
 }

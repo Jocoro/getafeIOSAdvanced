@@ -18,51 +18,44 @@ class UsersViewController: UIViewController {
     @IBOutlet var segmentOptions : UISegmentedControl!
     
     @IBAction func onListTypePressed(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex{
-        case 0:
-            tableView.isHidden = false
-            collectionView.isHidden = true
-            tableView.reloadData()
-        default:
-            tableView.isHidden = true
-            collectionView.isHidden = false
-            collectionView.reloadData()
-        }
+        saveSegmentPreference(option: sender.selectedSegmentIndex)
+        showUsers()
     }
+    
+    
     private var users : [User] = []
     
     
     
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        loadSegmentPreference()
         configure(tableView: tableView)
         configure(collectionView: collectionView)
-        loadUsers()
+        
+        loadUsers(forceUpdate: false)
+        
+        
     }
     
-    private func loadUsers(){
-        DataManager.shared.usersForceUpdate { [weak self] result in
-            switch result{
-            case .success(let data):
-                guard let usersData = data as? [User] else {
-                    return
-                }
-                self?.users = usersData
-                switch self?.segmentOptions.selectedSegmentIndex{
-                case 0:
-                    self?.tableView.reloadData()
-                default:
-                    self?.collectionView.reloadData()
-                    
-                }
-            case .failure(let msg):
-                print(msg)
-            }
+
+    private func showUsers(){
+        switch segmentOptions.selectedSegmentIndex{
+        case 0:
+            tableView.reloadData()
+            tableView.isHidden = false
+            collectionView.isHidden = true
+        default:
+            collectionView.reloadData()
+            tableView.isHidden = true
+            collectionView.isHidden = false
+            
         }
+        
     }
-    
     
 }
 
@@ -74,8 +67,10 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.contentInset = UIEdgeInsets(top: segmentOptions.frame.origin.y + segmentOptions.frame.height,left: 0,bottom: 0,right: 0)
         tableView.dataSource = self
         tableView.delegate = self
+        configureRefreshTable()
         
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
@@ -87,7 +82,10 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
         }
         if(indexPath.row < users.count){
             let user = users[indexPath.row]
-            cell.configureCell(image: user.avatar, name: user.name, email: user.email)
+            
+            
+            cell.configureCell(image: user.avatar, name: user.name, email: user.email, age: "Edad: \(String(user.age))",
+                birthdate: user.birthdate)
         }
         return cell
     }
@@ -100,6 +98,7 @@ extension UsersViewController: UICollectionViewDataSource, UICollectionViewDeleg
         collectionView.contentInset = UIEdgeInsets(top: segmentOptions.frame.origin.y + segmentOptions.frame.height,left: 0,bottom: 0,right: 0)
         collectionView.dataSource = self
         collectionView.delegate = self
+        configureRefreshCollection()
         
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -116,31 +115,86 @@ extension UsersViewController: UICollectionViewDataSource, UICollectionViewDeleg
         }
         return cell
     }
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-         return 16.0
-         
-     }
-     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-         return 16.0
-     }
-     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 16.0
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 16.0
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = (collectionView.frame.size.width - 32.0) / 3.5
-         return CGSize(width: size, height: size)
-     }
-     
+        return CGSize(width: size, height: size)
+    }
+    
 }
 extension UsersViewController{
     //Opciones por defecto
-    func loadPreferences(){
-        let segmentedPreference = DataManager.shared.getDefaultOptions()
-        switch segmentedPreference {
-        case 0:
-            segmentOptions.
-        default:
-            
+    private func loadSegmentPreference(){
+        segmentOptions.selectedSegmentIndex = DataManager.shared.defaultSegment
+        
+    }
+    private func saveSegmentPreference(option: Int){
+        DataManager.shared.saveDefaultSegment(option: option)
+    }
+}
+// refresh collection y tableView
+extension UsersViewController {
+    func configureRefreshCollection () {
+        // Add the refresh control to your UIScrollView object.
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.addTarget(self, action:
+            #selector(handleRefreshCollection),
+                                                 for: .valueChanged)
+    }
+    
+    @objc func handleRefreshCollection() {
+        // Update your content…
+        loadUsers(forceUpdate: true)
+        print("Refresh collectionView")
+        // Dismiss the refresh control.
+        DispatchQueue.main.async {
+            self.collectionView.refreshControl?.endRefreshing()
         }
     }
-    func savePreferences(){
-        
+    func configureRefreshTable () {
+        // Add the refresh control to your UIScrollView object.
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action:
+            #selector(handleRefreshTable),
+                                            for: .valueChanged)
+    }
+    
+    @objc func handleRefreshTable() {
+        // Update your content…
+        loadUsers(forceUpdate: true)
+        print("Refresh tableView")
+        // Dismiss the refresh control.
+        DispatchQueue.main.async {
+            self.tableView.refreshControl?.endRefreshing()
+        }
+    }
+    func loadUsers(forceUpdate: Bool){
+        if forceUpdate{
+            DataManager.shared.usersForceUpdate { [weak self] result in
+                self?.parseUsers(result: result)
+            }
+        } else {
+            DataManager.shared.users { [weak self] result in
+                self?.parseUsers(result: result)
+            }
+        }
+    }
+    private func parseUsers(result: ServiceResult){
+        switch result{
+        case .success(let data):
+            guard let usersData = data as? [User] else {
+                return
+            }
+            self.users = usersData
+            self.showUsers()
+        case .failure(let msg):
+            print(msg)
+        }
     }
 }

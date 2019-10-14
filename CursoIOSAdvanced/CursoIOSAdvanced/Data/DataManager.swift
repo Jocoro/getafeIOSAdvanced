@@ -12,13 +12,24 @@ import Foundation
 class DataManager {
     // MARK: - Singleton declaration
     static let shared = DataManager()
+    
+    private var usersDB: Array<UserDAO> {
+          return Array(DataBaseManager.shared.users)
+          
+      }
+    
+    private var getUsersUIFromDB: Array<User>{
+        let usersDAO = usersDB
+        return getUsersUI(from: usersDAO)
+    }
+    
     private init() {}
     
     
     func users(completion: @escaping ServiceCompletion){
         
         DispatchQueue.global(qos: .background).async { [weak self] in
-            if let usersUI = self?.getUsersUIFromDB(), usersUI.count > 0 {
+            if let usersUI = self?.getUsersUIFromDB, usersUI.count > 0 {
                 // Devolver userDB
                 //Conviertes listado de users de la base de dato al modelo de user para las vistas
                 
@@ -56,7 +67,7 @@ class DataManager {
                     //guardar los datos
                     self?.save(users: users)
                     
-                    let usersUI = self?.getUsersUIFromDB()
+                    let usersUI = self?.getUsersUIFromDB
                     DispatchQueue.main.async {
                         completion(.success(data: usersUI))
                     }
@@ -72,30 +83,27 @@ class DataManager {
         
     }
     func user(id: String, completion: @escaping ServiceCompletion) {
-           DispatchQueue.global(qos: .background).async { [weak self] in
-               guard let userDAO = DataBaseManager.shared.user(id: id) else{
-                   
-                   DispatchQueue.main.async {
-                       completion(.failure(msg: "No se ha encontrado el usuario"))
-                   }
-                   return
-               }
-               let user = self?.getUserUI(from: userDAO)
-               DispatchQueue.main.async {
-                   completion(.success(data: user))
-               }
-           }
-           
-       }
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            guard let userDAO = DataBaseManager.shared.user(id: id) else{
+                
+                DispatchQueue.main.async {
+                    completion(.failure(msg: "No se ha encontrado el usuario"))
+                }
+                return
+            }
+            let user = self?.getUserUI(from: userDAO)
+            DispatchQueue.main.async {
+                completion(.success(data: user))
+            }
+        }
+        
+    }
     
     
     // listado de usuarios de la base de datos
-    private func usersDB() -> Array<UserDAO> {
-        return Array(DataBaseManager.shared.users())
-        
-    }
+  
     //Carga los datos de un usuario
-   
+    
     private func save(users: UsersDTO){
         guard let usersToSave = users.users else {
             return
@@ -120,7 +128,7 @@ class DataManager {
                              nationality : user.nat)
         DataBaseManager.shared.save(user: userDB)
     }
- 
+    
     private func getUserUI(from userDAO: UserDAO) -> User {
         
         return User(id: userDAO.uuid,
@@ -133,23 +141,21 @@ class DataManager {
                     nationality: userDAO.nationality)
         
     }
-  
+    
     private func getUsersUI(from usersDAO: Array<UserDAO>) -> Array<User> {
         return usersDAO.compactMap { getUserUI(from: $0)
         }
     }
-    private func getUsersUIFromDB() -> Array<User>{
-        let usersDAO = usersDB()
-       return getUsersUI(from: usersDAO)
-    }
+    
 }
 extension DataManager {
     //Opciones por defecto
-    func getDefaultOptions() -> Int {
-           return DataBaseManager.shared.getDefaultOptions()
-             }
-       func changeDefaultOptions(){
-           DataBaseManager.shared.changeDefaultOptions()
-          
-       }
+    var defaultSegment: Int{
+   return DataBaseManager.shared.getDefaultSegment
+        }
+    
+    func saveDefaultSegment(option: Int){
+        DataBaseManager.shared.saveDefaultSegment(option: option)
+        
+    }
 }
