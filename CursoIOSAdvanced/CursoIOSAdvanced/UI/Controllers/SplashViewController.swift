@@ -23,7 +23,7 @@ class SplashViewController: UIViewController {
     }
     
     private func navigate(){
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             guard let viewControllerDestination = storyboard.instantiateInitialViewController() else {
                 return
@@ -34,7 +34,8 @@ class SplashViewController: UIViewController {
     }
     func playAnimation(){
         let checkMarkAnimation =  AnimationView(name: "loading")
-        checkMarkAnimation.loopMode = .loop
+        checkMarkAnimation.loopMode = .autoReverse
+        checkMarkAnimation.animationSpeed = 3
         mViewLoading.contentMode = .scaleAspectFit
         checkMarkAnimation.frame = mViewLoading.bounds
         mViewLoading.addSubview(checkMarkAnimation)

@@ -151,7 +151,6 @@ extension UsersViewController {
     @objc func handleRefreshCollection() {
         // Update your content…
         loadUsers(forceUpdate: true)
-        print("Refresh collectionView")
         // Dismiss the refresh control.
         DispatchQueue.main.async {
             self.collectionView.refreshControl?.endRefreshing()
@@ -168,7 +167,6 @@ extension UsersViewController {
     @objc func handleRefreshTable() {
         // Update your content…
         loadUsers(forceUpdate: true)
-        print("Refresh tableView")
         // Dismiss the refresh control.
         DispatchQueue.main.async {
             self.tableView.refreshControl?.endRefreshing()

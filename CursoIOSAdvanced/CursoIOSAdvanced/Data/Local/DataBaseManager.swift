@@ -12,10 +12,13 @@ import RealmSwift
 class DataBaseManager{
     static let shared = DataBaseManager()
     private init(){}
-   
+   private let sortingKey = "birthdate"
     
     
     var users: Results<UserDAO> {
+        //Para devolver ordenados los de la base de datos
+        //var data = realm.objects(UserDAO.self)
+        //data = data.sorted(byKeyPath: sortingKey, ascending: true)
            return realm.objects(UserDAO.self)
        }
     

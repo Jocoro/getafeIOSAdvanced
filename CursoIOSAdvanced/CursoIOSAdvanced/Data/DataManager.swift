@@ -14,7 +14,7 @@ class DataManager {
     static let shared = DataManager()
     
     private var usersDB: Array<UserDAO> {
-          return Array(DataBaseManager.shared.users)
+        return Array(DataBaseManager.shared.users)
           
       }
     
@@ -143,7 +143,8 @@ class DataManager {
     }
     
     private func getUsersUI(from usersDAO: Array<UserDAO>) -> Array<User> {
-        return usersDAO.compactMap { getUserUI(from: $0)
+        //Para ordenar en el interfaz de usuario
+        return usersDAO.compactMap { getUserUI(from: $0)}.sorted {$0.age < $1.age
         }
     }
     
