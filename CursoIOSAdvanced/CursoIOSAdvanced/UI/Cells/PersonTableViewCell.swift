@@ -48,9 +48,5 @@ class PersonTableViewCell: UITableViewCell {
         }
         
     }
-    class func createCell() -> PersonTableViewCell? {
-           let nib = UINib(nibName: "CustomCell", bundle: nil)
-           let cell = nib.instantiate(withOwner: self, options: nil).last as? PersonTableViewCell
-           return cell
-       }
+   
 }

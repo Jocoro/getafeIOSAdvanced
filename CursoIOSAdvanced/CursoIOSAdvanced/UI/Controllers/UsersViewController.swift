@@ -24,6 +24,7 @@ class UsersViewController: UIViewController {
     
     
     private var users : [User] = []
+   
     
     
     
@@ -64,7 +65,7 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
     func configure(tableView: UITableView){
         
         tableView.register(UINib(nibName: PersonTableViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: PersonTableViewCell.cellIdentifier)
-        tableView.contentInset = UIEdgeInsets(top: segmentOptions.frame.origin.y + segmentOptions.frame.height,left: 0,bottom: 0,right: 0)
+        tableView.contentInset = UIEdgeInsets(top: segmentOptions.frame.height + 12,left: 0,bottom: 0,right: 0)
         tableView.dataSource = self
         tableView.delegate = self
         configureRefreshTable()
@@ -95,7 +96,7 @@ extension UsersViewController: UICollectionViewDataSource, UICollectionViewDeleg
     /// Configure collection view
     func configure(collectionView: UICollectionView){
         collectionView.register(UINib(nibName: PersonCollectionViewCell.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: PersonCollectionViewCell.cellIdentifier)
-        collectionView.contentInset = UIEdgeInsets(top: segmentOptions.frame.origin.y + segmentOptions.frame.height,left: 0,bottom: 0,right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: segmentOptions.frame.origin.y,left: 0,bottom: 0,right: 0)
         collectionView.dataSource = self
         collectionView.delegate = self
         configureRefreshCollection()
@@ -196,3 +197,36 @@ extension UsersViewController {
         }
     }
 }
+extension UsersViewController{
+   // override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //    if segue.identifier == "DetailSegue"{
+     //   guard let destination = segue.destination as? UserDetail,
+     //       let cell = sender as? UITableViewCell,
+      //      let indexPath = tableView.indexPath(for: cell) else {
+      //          return
+      //  }
+      //  destination.user = users[indexPath.row]
+      //  }
+   // }
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+             if  segue.identifier == "DetailSegue",
+                let destination = segue.destination as? UserDetail,
+                let indexPath = sender as? IndexPath
+                 
+             {
+                destination.user = users[indexPath.row]
+             }
+         }
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+           tableView.deselectRow(at: indexPath, animated: true)
+           
+           self.performSegue(withIdentifier: "DetailSegue", sender: indexPath)
+          
+       }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        self.performSegue(withIdentifier: "DetailSegue", sender: indexPath)
+       
+    }
+}
+

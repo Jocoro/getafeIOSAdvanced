@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="E6w-Za-wGv">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--User Detail-->
+        <scene sceneID="QX8-3h-qed">
+            <objects>
+                <viewController id="E6w-Za-wGv" customClass="UserDetail" customModule="CursoIOSAdvanced" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3B4-JK-btr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOP-K5-njj">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <sections/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JOz-TC-mNk">
+                                <rect key="frame" x="0.0" y="800" width="414" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="JOP-K5-njj" firstAttribute="leading" secondItem="LAC-M2-hKx" secondAttribute="leading" id="321-sg-CJB"/>
+                            <constraint firstItem="JOP-K5-njj" firstAttribute="bottom" secondItem="LAC-M2-hKx" secondAttribute="bottom" id="7UL-cU-wZY"/>
+                            <constraint firstItem="JOP-K5-njj" firstAttribute="top" secondItem="3B4-JK-btr" secondAttribute="top" id="Ffw-hQ-102"/>
+                            <constraint firstItem="JOP-K5-njj" firstAttribute="trailing" secondItem="LAC-M2-hKx" secondAttribute="trailing" id="h3l-0c-wJh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LAC-M2-hKx"/>
+                    </view>
+                    <connections>
+                        <outlet property="deleteButton" destination="JOz-TC-mNk" id="Gmw-cD-vk4"/>
+                        <outlet property="tableView" destination="JOP-K5-njj" id="L6N-tS-qsr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fg3-ah-SAV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-62.318840579710148" y="85.714285714285708"/>
+        </scene>
+    </scenes>
+</document>

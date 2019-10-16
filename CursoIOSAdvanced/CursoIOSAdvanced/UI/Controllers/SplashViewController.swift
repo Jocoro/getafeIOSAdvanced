@@ -23,7 +23,7 @@ class SplashViewController: UIViewController {
     }
     
     private func navigate(){
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             guard let viewControllerDestination = storyboard.instantiateInitialViewController() else {
                 return
