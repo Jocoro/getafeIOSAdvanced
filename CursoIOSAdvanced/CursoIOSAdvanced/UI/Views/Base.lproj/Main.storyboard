@@ -56,7 +56,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7ju-z7-WDM"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Users" id="LNU-di-dIQ"/>
+                    <navigationItem key="navigationItem" title="Users" id="LNU-di-dIQ">
+                        <barButtonItem key="backBarButtonItem" title=" " id="8fr-sm-lm1"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="7Gp-8P-HS9" id="o1X-hz-chb"/>
                         <outlet property="segmentOptions" destination="e2T-KG-tKF" id="G1D-fS-Q5N"/>

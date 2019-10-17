@@ -23,7 +23,7 @@ class UsersViewController: UIViewController {
     }
     
     
-    private var users : [User] = []
+    var users : [User] = []
    
     
     
@@ -41,7 +41,10 @@ class UsersViewController: UIViewController {
         
         
     }
-    
+  
+    override func viewWillAppear(_ animated: Bool) {
+        loadUsers(forceUpdate: false)
+    }
 
     private func showUsers(){
         switch segmentOptions.selectedSegmentIndex{
@@ -90,6 +93,12 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
         }
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+              tableView.deselectRow(at: indexPath, animated: true)
+              
+              self.performSegue(withIdentifier: "DetailSegue", sender: indexPath)
+             
+          }
 }
 extension UsersViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
@@ -127,6 +136,10 @@ extension UsersViewController: UICollectionViewDataSource, UICollectionViewDeleg
         let size = (collectionView.frame.size.width - 32.0) / 3.5
         return CGSize(width: size, height: size)
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+           
+           self.performSegue(withIdentifier: "DetailSegue", sender: indexPath)
+       }
     
 }
 extension UsersViewController{
@@ -198,16 +211,7 @@ extension UsersViewController {
     }
 }
 extension UsersViewController{
-   // override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //    if segue.identifier == "DetailSegue"{
-     //   guard let destination = segue.destination as? UserDetail,
-     //       let cell = sender as? UITableViewCell,
-      //      let indexPath = tableView.indexPath(for: cell) else {
-      //          return
-      //  }
-      //  destination.user = users[indexPath.row]
-      //  }
-   // }
+  
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
              if  segue.identifier == "DetailSegue",
                 let destination = segue.destination as? UserDetail,
@@ -217,16 +221,7 @@ extension UsersViewController{
                 destination.user = users[indexPath.row]
              }
          }
-     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-           tableView.deselectRow(at: indexPath, animated: true)
-           
-           self.performSegue(withIdentifier: "DetailSegue", sender: indexPath)
-          
-       }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        self.performSegue(withIdentifier: "DetailSegue", sender: indexPath)
-       
-    }
+    
+   
 }
 

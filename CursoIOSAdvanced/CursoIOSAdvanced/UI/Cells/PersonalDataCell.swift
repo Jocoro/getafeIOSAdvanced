@@ -11,7 +11,7 @@ import UIKit
 class PersonalDataCell: UITableViewCell {
     
      static let cellIdentifier = String(describing: PersonalDataCell.self)
-    static var cellType = UserDetailCellType.personalData
+
     
        @IBOutlet weak var imageInCell: UIImageView!
        @IBOutlet weak var name: UILabel!

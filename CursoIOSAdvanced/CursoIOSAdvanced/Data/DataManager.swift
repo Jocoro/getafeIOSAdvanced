@@ -82,6 +82,8 @@ class DataManager {
         }
         
     }
+    
+    
     func user(id: String, completion: @escaping ServiceCompletion) {
         DispatchQueue.global(qos: .background).async { [weak self] in
             guard let userDAO = DataBaseManager.shared.user(id: id) else{
@@ -138,7 +140,9 @@ class DataManager {
                     email: userDAO.email,
                     birthdate: userDAO.birthdate,
                     country: userDAO.country,
-                    nationality: userDAO.nationality)
+                    nationality: userDAO.nationality,
+                    latitude: userDAO.latitude,
+                    longitude: userDAO.longitude)
         
     }
     

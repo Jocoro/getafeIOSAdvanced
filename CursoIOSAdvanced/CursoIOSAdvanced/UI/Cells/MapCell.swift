@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import MapKit
 
 class MapCell: UITableViewCell {
 
      static let cellIdentifier = String(describing: MapCell.self)
+    
+    @IBOutlet weak var mapInCell: MKMapView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,5 +25,21 @@ class MapCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    func configureCell(latitude: String? = nil, longitude: String? = nil){
+        guard let latitudeCenter = latitude, let longitudeCenter = longitude, let doubleLatitude = Double(latitudeCenter),
+        let doubleLongitude = Double(longitudeCenter) else {
+            return
+        }
+        let location = CLLocationCoordinate2D(latitude: doubleLatitude,
+                longitude: doubleLongitude)
+            
+            // 2
+        let span = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+            let region = MKCoordinateRegion(center: location, span: span)
+                mapInCell.setRegion(region, animated: true)
+         
+         
+          }
+   
     
 }

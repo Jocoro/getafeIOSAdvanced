@@ -22,7 +22,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JOz-TC-mNk">
                                 <rect key="frame" x="0.0" y="800" width="414" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="onButtonPressed:" destination="E6w-Za-wGv" eventType="touchUpInside" id="opo-Zq-ndE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
