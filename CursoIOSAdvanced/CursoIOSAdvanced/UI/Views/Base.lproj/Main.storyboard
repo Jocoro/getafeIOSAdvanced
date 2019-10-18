@@ -30,28 +30,52 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="e2T-KG-tKF">
-                                <rect key="frame" x="156.5" y="104" width="101" height="32"/>
-                                <segments>
-                                    <segment title="" image="ic-tableselector"/>
-                                    <segment title="" image="ic-collectionselector"/>
-                                </segments>
-                                <connections>
-                                    <action selector="onListTypePressed:" destination="6e5-9M-4Db" eventType="valueChanged" id="PTq-i3-XIi"/>
-                                </connections>
-                            </segmentedControl>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="k0T-yw-WtW">
+                                <rect key="frame" x="8" y="96" width="398" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="20D-km-e6U">
+                                        <rect key="frame" x="0.0" y="0.0" width="124.5" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="e2T-KG-tKF">
+                                        <rect key="frame" x="148.5" y="0.0" width="101" height="32"/>
+                                        <segments>
+                                            <segment title="" image="ic-tableselector"/>
+                                            <segment title="" image="ic-collectionselector"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="onListTypePressed:" destination="6e5-9M-4Db" eventType="valueChanged" id="PTq-i3-XIi"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qow-FB-cXC">
+                                        <rect key="frame" x="273.5" y="0.0" width="124.5" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="onButtonPressed:" destination="6e5-9M-4Db" eventType="touchUpInside" id="YwW-HV-eSq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="e2T-KG-tKF" firstAttribute="centerX" secondItem="k0T-yw-WtW" secondAttribute="centerX" id="4K4-V6-eoc"/>
+                                    <constraint firstAttribute="height" constant="40" id="F0o-dw-wvg"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="7Gp-8P-HS9" firstAttribute="top" secondItem="7ju-z7-WDM" secondAttribute="top" id="7HS-kg-bAT"/>
+                            <constraint firstItem="k0T-yw-WtW" firstAttribute="top" secondItem="7ju-z7-WDM" secondAttribute="top" constant="8" id="AnS-rg-yg9"/>
                             <constraint firstItem="5Oj-cb-Sxu" firstAttribute="top" secondItem="7ju-z7-WDM" secondAttribute="top" id="Arx-7l-Yiy"/>
+                            <constraint firstItem="k0T-yw-WtW" firstAttribute="leading" secondItem="7ju-z7-WDM" secondAttribute="leading" constant="8" id="BQ8-HW-KO3"/>
                             <constraint firstItem="7ju-z7-WDM" firstAttribute="bottom" secondItem="5Oj-cb-Sxu" secondAttribute="bottom" id="CMm-1O-7di"/>
-                            <constraint firstItem="e2T-KG-tKF" firstAttribute="centerX" secondItem="RhT-6z-apd" secondAttribute="centerX" id="Dn1-Qe-hkO"/>
                             <constraint firstItem="5Oj-cb-Sxu" firstAttribute="leading" secondItem="7ju-z7-WDM" secondAttribute="leading" id="GrZ-8g-E9v"/>
                             <constraint firstItem="7ju-z7-WDM" firstAttribute="trailing" secondItem="5Oj-cb-Sxu" secondAttribute="trailing" id="Jhx-Uz-Tvb"/>
                             <constraint firstItem="7Gp-8P-HS9" firstAttribute="leading" secondItem="7ju-z7-WDM" secondAttribute="leading" id="UnO-gd-py3"/>
                             <constraint firstItem="7ju-z7-WDM" firstAttribute="trailing" secondItem="7Gp-8P-HS9" secondAttribute="trailing" id="dWr-iL-UFe"/>
-                            <constraint firstItem="e2T-KG-tKF" firstAttribute="top" secondItem="7ju-z7-WDM" secondAttribute="top" constant="16" id="kEW-2f-rFL"/>
+                            <constraint firstItem="7ju-z7-WDM" firstAttribute="trailing" secondItem="k0T-yw-WtW" secondAttribute="trailing" constant="8" id="eUn-QQ-f1A"/>
                             <constraint firstItem="7ju-z7-WDM" firstAttribute="bottom" secondItem="7Gp-8P-HS9" secondAttribute="bottom" id="rgl-7B-Uq5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7ju-z7-WDM"/>
@@ -62,13 +86,15 @@
                     <connections>
                         <outlet property="collectionView" destination="7Gp-8P-HS9" id="o1X-hz-chb"/>
                         <outlet property="segmentOptions" destination="e2T-KG-tKF" id="G1D-fS-Q5N"/>
+                        <outlet property="sortByCountry" destination="qow-FB-cXC" id="yzI-ug-1hk"/>
                         <outlet property="tableView" destination="5Oj-cb-Sxu" id="gPG-Hq-Bv5"/>
+                        <outlet property="totalUsers" destination="20D-km-e6U" id="6nD-Oe-DPp"/>
                         <segue destination="9bo-1S-VIt" kind="show" identifier="DetailSegue" id="we0-vI-Rc7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gov-qO-VFF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2144.927536231884" y="176.78571428571428"/>
+            <point key="canvasLocation" x="2143.4782608695655" y="176.78571428571428"/>
         </scene>
         <!--UserDetail-->
         <scene sceneID="pfK-g9-tdy">

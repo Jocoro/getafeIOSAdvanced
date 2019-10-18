@@ -15,8 +15,8 @@ class DataManager {
     
     private var usersDB: Array<UserDAO> {
         return Array(DataBaseManager.shared.users)
-          
-      }
+        
+    }
     
     private var getUsersUIFromDB: Array<User>{
         let usersDAO = usersDB
@@ -103,7 +103,7 @@ class DataManager {
     
     
     // listado de usuarios de la base de datos
-  
+    
     //Carga los datos de un usuario
     
     private func save(users: UsersDTO){
@@ -142,25 +142,39 @@ class DataManager {
                     country: userDAO.country,
                     nationality: userDAO.nationality,
                     latitude: userDAO.latitude,
-                    longitude: userDAO.longitude)
+                    longitude: userDAO.longitude,
+                    gender: userDAO.gender)
         
     }
     
     private func getUsersUI(from usersDAO: Array<UserDAO>) -> Array<User> {
         //Para ordenar en el interfaz de usuario
-        return usersDAO.compactMap { getUserUI(from: $0)}.sorted {$0.age < $1.age
+        if DataBaseManager.shared.getDefaultSorting {
+            return usersDAO.compactMap { getUserUI(from: $0)}.sorted {$0.country ?? "" < $1.country ?? ""}
+        } else{
+            return usersDAO.compactMap { getUserUI(from: $0)}.sorted {$0.age < $1.age}
         }
+        
     }
     
 }
+
+
+
 extension DataManager {
     //Opciones por defecto
     var defaultSegment: Int{
-   return DataBaseManager.shared.getDefaultSegment
-        }
+        return DataBaseManager.shared.getDefaultSegment
+    }
     
     func saveDefaultSegment(option: Int){
         DataBaseManager.shared.saveDefaultSegment(option: option)
         
+    }
+    var defaultSorting: Bool{
+        return DataBaseManager.shared.getDefaultSorting
+    }
+    func changeDefaultSorting(){
+        DataBaseManager.shared.changeDefaultSorting()
     }
 }

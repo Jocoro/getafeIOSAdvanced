@@ -33,13 +33,19 @@
                                         <rect key="frame" x="80" y="0.0" width="223" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKk-rf-Psg">
-                                                <rect key="frame" x="0.0" y="0.0" width="223" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="223" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTY-MP-Wfl">
-                                                <rect key="frame" x="0.0" y="50" width="223" height="50"/>
+                                                <rect key="frame" x="0.0" y="33.5" width="223" height="33"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNa-Lh-Ene">
+                                                <rect key="frame" x="0.0" y="66.5" width="223" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -70,6 +76,7 @@
             <connections>
                 <outlet property="age" destination="sTY-MP-Wfl" id="xic-wb-eMN"/>
                 <outlet property="birthdate" destination="guk-me-hBt" id="jBQ-19-1Au"/>
+                <outlet property="gender" destination="mNa-Lh-Ene" id="lun-Y7-7z5"/>
                 <outlet property="imageInCell" destination="Rba-f5-mFg" id="w3v-aM-fCJ"/>
                 <outlet property="name" destination="EKk-rf-Psg" id="R81-yJ-DbE"/>
             </connections>

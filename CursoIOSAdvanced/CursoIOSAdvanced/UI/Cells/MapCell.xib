@@ -19,16 +19,41 @@
                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BpJ-uo-x8W">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="201"/>
                     </mapView>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="8am-8X-pCp">
+                        <rect key="frame" x="8" y="153" width="304" height="40"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQR-TB-ccP">
+                                <rect key="frame" x="0.0" y="0.0" width="152" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxI-mO-y1x">
+                                <rect key="frame" x="152" y="0.0" width="152" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="784-d4-lyE"/>
+                        </constraints>
+                    </stackView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="BpJ-uo-x8W" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="6pU-fJ-4J1"/>
                     <constraint firstItem="BpJ-uo-x8W" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="V9v-hq-G2i"/>
                     <constraint firstAttribute="bottom" secondItem="BpJ-uo-x8W" secondAttribute="bottom" id="c1E-Ce-45K"/>
+                    <constraint firstAttribute="trailing" secondItem="8am-8X-pCp" secondAttribute="trailing" constant="8" id="hAo-Zh-9ck"/>
                     <constraint firstAttribute="trailing" secondItem="BpJ-uo-x8W" secondAttribute="trailing" id="mb6-S2-pkn"/>
+                    <constraint firstAttribute="bottom" secondItem="8am-8X-pCp" secondAttribute="bottom" constant="8" id="p95-nP-m2h"/>
+                    <constraint firstItem="8am-8X-pCp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="vBA-RR-fMK"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="latitude" destination="zQR-TB-ccP" id="mcs-Dq-s1g"/>
+                <outlet property="longitude" destination="oxI-mO-y1x" id="j7A-eO-Teq"/>
                 <outlet property="mapInCell" destination="BpJ-uo-x8W" id="eIk-aA-AFk"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="193.19196428571428"/>

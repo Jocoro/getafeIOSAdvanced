@@ -62,4 +62,13 @@ extension DataBaseManager {
         UserDefaults.standard.set(option, forKey: segmentMode)
         
     }
+    var sortByCountry: String {
+        return "sortMode"
+    }
+    var getDefaultSorting: Bool {
+        return UserDefaults.standard.bool(forKey: sortByCountry)
+    }
+    func changeDefaultSorting(){
+        UserDefaults.standard.set(!getDefaultSorting, forKey: sortByCountry)
+    }
 }

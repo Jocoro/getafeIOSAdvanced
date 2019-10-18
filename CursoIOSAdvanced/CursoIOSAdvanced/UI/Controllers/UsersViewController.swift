@@ -16,15 +16,21 @@ class UsersViewController: UIViewController {
     @IBOutlet var tableView : UITableView!
     @IBOutlet var collectionView : UICollectionView!
     @IBOutlet var segmentOptions : UISegmentedControl!
+    @IBOutlet var totalUsers : UILabel!
+    @IBOutlet var sortByCountry: UIButton!
     
     @IBAction func onListTypePressed(_ sender: UISegmentedControl) {
         saveSegmentPreference(option: sender.selectedSegmentIndex)
         showUsers()
     }
-    
+    @IBAction func onButtonPressed(_ sender: UIButton){
+        changeSortingPreference()
+        loadSortingLabel()
+        loadUsers(forceUpdate: false)
+    }
     
     var users : [User] = []
-   
+ 
     
     
     
@@ -34,6 +40,9 @@ class UsersViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         loadSegmentPreference()
+        loadSortingLabel()
+        configureView(viewName: totalUsers)
+        configureView(viewName: sortByCountry)
         configure(tableView: tableView)
         configure(collectionView: collectionView)
         
@@ -45,7 +54,17 @@ class UsersViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         loadUsers(forceUpdate: false)
     }
-
+    private func updateTotalUsers(){
+        let totalFemales = users.filter {$0.gender == "female"}.count
+        let totalMales = users.filter{$0.gender == "male"}.count
+        totalUsers.text = "M: \(totalMales) W: \(totalFemales)"
+    }
+    private func configureView(viewName: UIView){
+        viewName.layer.cornerRadius = 8.0
+        viewName.layer.borderWidth = 1
+        viewName.layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
+        viewName.layer.backgroundColor = CGColor(srgbRed: 1, green: 1, blue: 1, alpha: 0.5)
+    }
     private func showUsers(){
         switch segmentOptions.selectedSegmentIndex{
         case 0:
@@ -60,7 +79,31 @@ class UsersViewController: UIViewController {
         }
         
     }
-    
+    func loadUsers(forceUpdate: Bool){
+        if forceUpdate{
+            DataManager.shared.usersForceUpdate { [weak self] result in
+                self?.parseUsers(result: result)
+            }
+        } else {
+            DataManager.shared.users { [weak self] result in
+                self?.parseUsers(result: result)
+            }
+        }
+    }
+    private func parseUsers(result: ServiceResult){
+        switch result{
+        case .success(let data):
+            guard let usersData = data as? [User] else {
+                return
+            }
+            self.users = usersData
+            self.showUsers()
+        case .failure(let msg):
+            print(msg)
+        }
+          updateTotalUsers()
+    }
+   
 }
 
 extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
@@ -105,7 +148,7 @@ extension UsersViewController: UICollectionViewDataSource, UICollectionViewDeleg
     /// Configure collection view
     func configure(collectionView: UICollectionView){
         collectionView.register(UINib(nibName: PersonCollectionViewCell.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: PersonCollectionViewCell.cellIdentifier)
-        collectionView.contentInset = UIEdgeInsets(top: segmentOptions.frame.origin.y,left: 0,bottom: 0,right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: segmentOptions.frame.height + 20,left: 0,bottom: 0,right: 0)
         collectionView.dataSource = self
         collectionView.delegate = self
         configureRefreshCollection()
@@ -148,8 +191,19 @@ extension UsersViewController{
         segmentOptions.selectedSegmentIndex = DataManager.shared.defaultSegment
         
     }
+    private func loadSortingLabel(){
+        switch DataManager.shared.defaultSorting{
+        case true:
+            sortByCountry.setTitle("Sort by age", for: .normal)
+        case false:
+            sortByCountry.setTitle("Sort by country", for: .normal)
+        }
+    }
     private func saveSegmentPreference(option: Int){
         DataManager.shared.saveDefaultSegment(option: option)
+    }
+    private func changeSortingPreference(){
+        DataManager.shared.changeDefaultSorting()
     }
 }
 // refresh collection y tableView
@@ -186,29 +240,7 @@ extension UsersViewController {
             self.tableView.refreshControl?.endRefreshing()
         }
     }
-    func loadUsers(forceUpdate: Bool){
-        if forceUpdate{
-            DataManager.shared.usersForceUpdate { [weak self] result in
-                self?.parseUsers(result: result)
-            }
-        } else {
-            DataManager.shared.users { [weak self] result in
-                self?.parseUsers(result: result)
-            }
-        }
-    }
-    private func parseUsers(result: ServiceResult){
-        switch result{
-        case .success(let data):
-            guard let usersData = data as? [User] else {
-                return
-            }
-            self.users = usersData
-            self.showUsers()
-        case .failure(let msg):
-            print(msg)
-        }
-    }
+
 }
 extension UsersViewController{
   
@@ -219,6 +251,8 @@ extension UsersViewController{
                  
              {
                 destination.user = users[indexPath.row]
+                let country = users[indexPath.row].country
+                destination.usersSameCountry = users.filter{$0.country == country}
              }
          }
     

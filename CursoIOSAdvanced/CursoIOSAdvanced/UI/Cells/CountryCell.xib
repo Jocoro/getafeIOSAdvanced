@@ -16,23 +16,35 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWk-6v-qri">
-                        <rect key="frame" x="12" y="0.0" width="296" height="44"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="oHX-t8-b44">
+                        <rect key="frame" x="8" y="8" width="304" height="28"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWk-6v-qri">
+                                <rect key="frame" x="0.0" y="0.0" width="152" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Sb-2l-Fjt">
+                                <rect key="frame" x="152" y="0.0" width="152" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="UWk-6v-qri" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Yc8-Hk-9Kz"/>
-                    <constraint firstItem="UWk-6v-qri" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="d0d-cp-hWK"/>
-                    <constraint firstAttribute="trailing" secondItem="UWk-6v-qri" secondAttribute="trailing" constant="12" id="gxx-zK-oo0"/>
-                    <constraint firstAttribute="bottom" secondItem="UWk-6v-qri" secondAttribute="bottom" id="jxr-h5-nmT"/>
+                    <constraint firstItem="oHX-t8-b44" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="0J0-PN-ZWK"/>
+                    <constraint firstItem="oHX-t8-b44" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="70S-UR-SD9"/>
+                    <constraint firstAttribute="bottom" secondItem="oHX-t8-b44" secondAttribute="bottom" constant="8" id="Kwf-Xs-WTW"/>
+                    <constraint firstAttribute="trailing" secondItem="oHX-t8-b44" secondAttribute="trailing" constant="8" id="W4R-EU-eFa"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="country" destination="UWk-6v-qri" id="WoL-RH-4ta"/>
+                <outlet property="nationality" destination="0Sb-2l-Fjt" id="LRk-Fi-T4S"/>
             </connections>
             <point key="canvasLocation" x="141" y="141"/>
         </tableViewCell>

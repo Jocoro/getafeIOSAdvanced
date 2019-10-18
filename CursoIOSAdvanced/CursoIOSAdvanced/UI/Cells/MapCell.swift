@@ -14,12 +14,24 @@ class MapCell: UITableViewCell {
      static let cellIdentifier = String(describing: MapCell.self)
     
     @IBOutlet weak var mapInCell: MKMapView!
+    @IBOutlet weak var latitude: UILabel!
+    @IBOutlet weak var longitude: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    override func prepareForReuse() {
+        let location = CLLocationCoordinate2D(latitude: 40.416775,
+                longitude: 40.416775)
+            
+           
+        let span = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+            let region = MKCoordinateRegion(center: location, span: span)
+                mapInCell.setRegion(region, animated: true)
+        latitude.text = nil
+        longitude.text = nil
+          }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -37,7 +49,14 @@ class MapCell: UITableViewCell {
         let span = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
             let region = MKCoordinateRegion(center: location, span: span)
                 mapInCell.setRegion(region, animated: true)
-         
+        let position = MKPointAnnotation()
+        position.coordinate = CLLocationCoordinate2D(latitude: doubleLatitude, longitude: doubleLongitude)
+        position.title = "Position"
+        position.subtitle = ""
+        // Add marker `hello` to the map.
+        mapInCell.addAnnotation(position)
+        self.latitude.text = "Latitude: \(latitudeCenter)"
+        self.longitude.text = "Longitude: \(longitudeCenter)"
          
           }
    
