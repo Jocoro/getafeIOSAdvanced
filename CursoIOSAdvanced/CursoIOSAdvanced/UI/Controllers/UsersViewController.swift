@@ -46,8 +46,6 @@ class UsersViewController: UIViewController {
         configure(tableView: tableView)
         configure(collectionView: collectionView)
         
-        loadUsers(forceUpdate: false)
-        
         
     }
   
@@ -131,7 +129,7 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
             let user = users[indexPath.row]
             
             
-            cell.configureCell(image: user.avatar, name: user.name, email: user.email, age: "Edad: \(String(user.age))",
+            cell.configureCell(image: user.avatar, name: user.name, email: user.email, age: "Age: \(String(user.age))",
                 birthdate: user.birthdate)
         }
         return cell
@@ -252,7 +250,7 @@ extension UsersViewController{
              {
                 destination.user = users[indexPath.row]
                 let country = users[indexPath.row].country
-                destination.usersSameCountry = users.filter{$0.country == country}
+                destination.usersSameCountry = users.filter{$0.country == country && $0.id != users[indexPath.row].id}
              }
          }
     

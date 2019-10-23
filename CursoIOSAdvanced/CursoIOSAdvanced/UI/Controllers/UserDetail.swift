@@ -7,13 +7,7 @@
 //
 
 import UIKit
-enum UserDetailCellType: Int {
-    case personalData = 0
-    case contactData = 3
-    case country = 1
-    case map = 2
-    case usersSameCountry = 4
-}
+
 class UserDetail: UIViewController {
     @IBOutlet var tableView : UITableView!
     @IBOutlet var deleteButton : UIButton!
@@ -23,12 +17,15 @@ class UserDetail: UIViewController {
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Eliminar", style: .destructive, handler: {[weak self] _ in
             //Elimina el profesor de la lista de todos los profesores
-            guard let id = self?.user?.id, let userDB = DataBaseManager.shared.user(id: id) else {
+            guard let id = self?.user?.id else {
                 return
             }
-            DataBaseManager.shared.delete(user: userDB)
+            self?.delete(user: id) {_ in 
+                 self?.navigationController?.popViewController(animated: true)
+            }
+          
             
-            self?.navigationController?.popViewController(animated: true)
+     
             
             
         }))
@@ -36,19 +33,48 @@ class UserDetail: UIViewController {
         
         present(alert, animated: true)
     }
-    var user: User?
-    var usersSameCountry: [User] = []
-    
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        configure(tableView: tableView)
-        
+    func delete(user id: String, completion: @escaping ServiceCompletion){
+        DispatchQueue.global(qos: .background).async {
+            guard let userDB = DataBaseManager.shared.user(id: id) else {
+                return
+            }
+            DataBaseManager.shared.delete(user: userDB)
+            DispatchQueue.main.async {
+                completion(.success(data: nil))
+            
+        }
     }
-    
 }
-extension UserDetail: UITableViewDataSource, UITableViewDelegate {
+var user: User?
+var usersSameCountry: [User] = []
+private var cellTypes = [UserDetailCellType.personalData, UserDetailCellType.contactData, UserDetailCellType.country, UserDetailCellType.map, UserDetailCellType.usersSameCountry]
+
+enum UserDetailCellType: Int {
+    case personalData = 0
+    case contactData = 3
+    case country = 1
+    case map = 2
+    case usersSameCountry = 4
+}
+
+override func viewDidLoad() {
+    
+    super.viewDidLoad()
+    //Do any additional setup after loading the view.
+    configure(tableView: tableView)
+    configureView(viewName: deleteButton)
+    deleteButton.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+}
+private func configureView(viewName: UIView){
+    viewName.layer.cornerRadius = 8.0
+    viewName.layer.borderWidth = 1
+    viewName.layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
+    viewName.layer.backgroundColor = CGColor(srgbRed: 1, green: 1, blue: 1, alpha: 1)
+}
+
+}
+extension UserDetail: UITableViewDataSource, UITableViewDelegate{
+    
     /// Configure table view
     func configure(tableView: UITableView){
         enableCells()
@@ -58,6 +84,8 @@ extension UserDetail: UITableViewDataSource, UITableViewDelegate {
         self.tableView.estimatedRowHeight = 200
         tableView.dataSource = self
         tableView.delegate = self
+        //tableView.allowsSelection = false
+        
         
     }
     private func enableCells(){
@@ -69,87 +97,103 @@ extension UserDetail: UITableViewDataSource, UITableViewDelegate {
         tableView.register(UINib(nibName: UsersSameCountryCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: UsersSameCountryCell.cellIdentifier)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return cellTypes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let actualUser = user else {
             return UITableViewCell()
         }
-        switch indexPath.row{
+        switch cellTypes[indexPath.row]{
             
-        case UserDetailCellType.personalData.rawValue:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: PersonalDataCell.cellIdentifier, for: indexPath) as? PersonalDataCell else {
-                           
-                           return UITableViewCell()
-                   }
-                   cell.configureCell(image: actualUser.avatar, name: actualUser.name, age: "\(actualUser.age)", birthdate: actualUser.birthdate, gender: actualUser.gender)
-                   return cell
+        case .personalData:
+            return cellPersonalData(tableView: tableView, indexPath: indexPath, user: actualUser)
             
+        case .contactData:
+            return cellContactData(tableView: tableView, indexPath: indexPath, user: actualUser)
             
-        case UserDetailCellType.contactData.rawValue:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactDataCell.cellIdentifier, for: indexPath) as? ContactDataCell else {
-                    
-                    return UITableViewCell()
-            }
-            cell.configureCell(email: actualUser.email)
-            return cell
-        case UserDetailCellType.country.rawValue:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: CountryCell.cellIdentifier, for: indexPath) as? CountryCell else {
-                    
-                    return UITableViewCell()
-            }
-            cell.configureCell(country: actualUser.country, nationality: actualUser.nationality)
-            return cell
+        case .country:
+            return cellCountry(tableView: tableView, indexPath: indexPath, user: actualUser)
             
-        case UserDetailCellType.map.rawValue:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: MapCell.cellIdentifier, for: indexPath) as? MapCell else {
-                    return UITableViewCell()
-            }
-            cell.configureCell(latitude: actualUser.latitude, longitude: actualUser.longitude)
-            return cell
-       
-        case UserDetailCellType.usersSameCountry.rawValue:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: UsersSameCountryCell.cellIdentifier, for: indexPath) as? UsersSameCountryCell else {
-                    return UITableViewCell()
-            }
-            cell.configureCell(users: usersSameCountry)
-            return cell
-            default:
-                       return UITableViewCell()
+        case .map:
+            return cellMap(tableView: tableView, indexPath: indexPath, user: actualUser)
+            
+        case .usersSameCountry:
+            return cellUsersSameCountry(tableView: tableView, indexPath: indexPath, user: actualUser)
         }
-        
         
     }
-    func cellDesign(prototypeCell: UITableViewCell, indexPath: IndexPath) -> UITableViewCell{
-        let cellType = type(of: prototypeCell)
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(cellType)", for: indexPath) as? PersonalDataCell,
-            let userCell = user else {
-                
-                return UITableViewCell()
+    func cellPersonalData(tableView: UITableView, indexPath: IndexPath, user: User) -> UITableViewCell{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PersonalDataCell.cellIdentifier, for: indexPath) as? PersonalDataCell else {
+            
+            return UITableViewCell()
         }
-        cell.configureCell(image: userCell.avatar, name: userCell.name, age: "\(userCell.age)", birthdate: userCell.birthdate, gender: userCell.gender)
+        cell.configureCell(image: user.avatar, name: user.name, age: "\(user.age)", birthdate: user.birthdate, gender: user.gender)
         return cell
-        
-        
     }
+    
+    func cellContactData(tableView: UITableView, indexPath: IndexPath, user: User) -> UITableViewCell{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactDataCell.cellIdentifier, for: indexPath) as? ContactDataCell else {
+            
+            return UITableViewCell()
+        }
+        cell.configureCell(email: user.email)
+        return cell
+    }
+    func cellCountry(tableView: UITableView, indexPath: IndexPath, user: User) -> UITableViewCell{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CountryCell.cellIdentifier, for: indexPath) as? CountryCell else {
+            
+            return UITableViewCell()
+        }
+        cell.configureCell(country: user.country, nationality: user.nationality)
+        return cell
+    }
+    func cellMap(tableView: UITableView, indexPath: IndexPath, user: User) -> UITableViewCell{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MapCell.cellIdentifier, for: indexPath) as? MapCell else {
+            return UITableViewCell()
+        }
+        cell.configureCell(latitude: user.latitude, longitude: user.longitude)
+        return cell
+    }
+    private func cellUsersSameCountry(tableView: UITableView, indexPath: IndexPath, user: User) -> UITableViewCell{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: UsersSameCountryCell.cellIdentifier, for: indexPath) as? UsersSameCountryCell else {
+            return UITableViewCell()
+        }
+        cell.configureCell(users: usersSameCountry, country: user.country)
+        return cell
+    }
+    
+    
     //Tamaño de cada celda
     func tableView(_ tableView: UITableView, heightForRowAt: IndexPath) -> CGFloat{
-        switch heightForRowAt.row{
-        case UserDetailCellType.personalData.rawValue:
-            return 160
-        case UserDetailCellType.contactData.rawValue:
-            return 44
-        case UserDetailCellType.country.rawValue:
-            return 44
-        case UserDetailCellType.usersSameCountry.rawValue:
-            return 400
-        default:
-            return 200
+        switch cellTypes[heightForRowAt.row]{
+        case .personalData:
+            return PersonalDataCell.cellHeight
+        case .contactData:
+            return ContactDataCell.cellHeight
+        case .country:
+            return CountryCell.cellHeight
+        case .usersSameCountry:
+            return UsersSameCountryCell.cellHeight
+            
+        case .map:
+            return MapCell.cellHeight
         }
         
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let cell = tableView.cellForRow(at: indexPath) as? UsersSameCountryCell, let newUser = cell.nextUser, let oldUser = user else {
+            return
+        }
+        
+        self.user = newUser
+        let unsortedUsers = usersSameCountry + [oldUser]
+        self.usersSameCountry = unsortedUsers.filter{$0.id != newUser.id}.sorted{$0.age < $1.age}
+        tableView.reloadData()
+        
+    }
+    
 }
 //Constrains
 

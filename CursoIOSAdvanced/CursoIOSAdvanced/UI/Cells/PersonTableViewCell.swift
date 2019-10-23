@@ -43,8 +43,9 @@ class PersonTableViewCell: UITableViewCell {
         //Para transformar la fecha en String
         if let birthdate = birthdate{
                    let formatter = DateFormatter()
-                   formatter.dateFormat = "dd' del 'MM' de 'yyyy"
+                   formatter.dateFormat = "dd'/'MM'/'yy"
         self.birthdate.text = formatter.string(from: birthdate)
+            imageInCell.layer.cornerRadius = imageInCell.frame.height/2
         }
         
     }

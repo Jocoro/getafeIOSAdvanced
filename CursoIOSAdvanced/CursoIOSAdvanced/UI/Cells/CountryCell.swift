@@ -11,7 +11,9 @@ import UIKit
 class CountryCell: UITableViewCell {
     
      static let cellIdentifier = String(describing: CountryCell.self)
+    static let cellHeight: CGFloat = 52
     
+    @IBOutlet weak var viewInCell: UIView!
      @IBOutlet weak var country: UILabel!
     @IBOutlet weak var nationality: UILabel!
     
@@ -23,6 +25,8 @@ class CountryCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        viewInCell.configureShadows()
+        viewInCell.layer.cornerRadius = 8.0
     }
     func configureCell(country: String? = nil, nationality: String? = nil){
        

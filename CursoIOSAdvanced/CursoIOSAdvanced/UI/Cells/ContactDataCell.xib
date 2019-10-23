@@ -16,23 +16,36 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbt-UU-2Bg">
-                        <rect key="frame" x="12" y="0.0" width="296" height="44"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yfP-0h-XBA">
+                        <rect key="frame" x="8" y="8" width="304" height="28"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbt-UU-2Bg">
+                                <rect key="frame" x="8" y="8" width="288" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="qbt-UU-2Bg" firstAttribute="leading" secondItem="yfP-0h-XBA" secondAttribute="leading" constant="8" id="AJH-Iz-vIE"/>
+                            <constraint firstItem="qbt-UU-2Bg" firstAttribute="top" secondItem="yfP-0h-XBA" secondAttribute="top" constant="8" id="HbK-Gx-y4T"/>
+                            <constraint firstAttribute="bottom" secondItem="qbt-UU-2Bg" secondAttribute="bottom" constant="8" id="jlE-GF-yL0"/>
+                            <constraint firstAttribute="trailing" secondItem="qbt-UU-2Bg" secondAttribute="trailing" constant="8" id="pGP-j8-TUt"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="qbt-UU-2Bg" secondAttribute="bottom" id="QA3-gu-r1z"/>
-                    <constraint firstItem="qbt-UU-2Bg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="ebd-fv-TNC"/>
-                    <constraint firstAttribute="trailing" secondItem="qbt-UU-2Bg" secondAttribute="trailing" constant="12" id="fRz-qT-Gj9"/>
-                    <constraint firstItem="qbt-UU-2Bg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="jqh-Hx-2OK"/>
+                    <constraint firstItem="yfP-0h-XBA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="1Lu-2w-VFS"/>
+                    <constraint firstAttribute="bottom" secondItem="yfP-0h-XBA" secondAttribute="bottom" constant="8" id="9cv-RX-8Hc"/>
+                    <constraint firstAttribute="trailing" secondItem="yfP-0h-XBA" secondAttribute="trailing" constant="8" id="Dq8-gM-xZh"/>
+                    <constraint firstItem="yfP-0h-XBA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="vfR-9n-HNK"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="email" destination="qbt-UU-2Bg" id="XC3-t4-amV"/>
+                <outlet property="viewInCell" destination="yfP-0h-XBA" id="0Pf-Lv-Tej"/>
             </connections>
             <point key="canvasLocation" x="139" y="141"/>
         </tableViewCell>

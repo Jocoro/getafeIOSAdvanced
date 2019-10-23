@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>982142198715-ttus2qj63tqec13l0i2l8t4uf0h4jg4e.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.982142198715-ttus2qj63tqec13l0i2l8t4uf0h4jg4e</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBqjZmkUyECFxbO2CipO4kuNQTF57E-Mzs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>982142198715</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ds.CursoIOSAdvanced</string>
+	<key>PROJECT_ID</key>
+	<string>ios-advanced-2deee</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ios-advanced-2deee.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<true/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:982142198715:ios:9dfab72cb59980990b9a9e</string>
+	<key>DATABASE_URL</key>
+	<string>https://ios-advanced-2deee.firebaseio.com</string>
+</dict>
+</plist>

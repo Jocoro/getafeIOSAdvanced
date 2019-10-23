@@ -11,7 +11,9 @@ import UIKit
 class ContactDataCell: UITableViewCell {
     
      static let cellIdentifier = String(describing: ContactDataCell.self)
+    static let cellHeight: CGFloat = 52
     
+       @IBOutlet weak var viewInCell: UIView!
            @IBOutlet weak var email: UILabel!
     
     override func prepareForReuse() {
@@ -21,6 +23,8 @@ class ContactDataCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        viewInCell.configureShadows()
+        viewInCell.layer.cornerRadius = 8.0
     }
     func configureCell(email: String? = nil){
        

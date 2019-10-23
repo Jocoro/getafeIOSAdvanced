@@ -16,35 +16,48 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="oHX-t8-b44">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kkc-pJ-e77">
                         <rect key="frame" x="8" y="8" width="304" height="28"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWk-6v-qri">
-                                <rect key="frame" x="0.0" y="0.0" width="152" height="28"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Sb-2l-Fjt">
-                                <rect key="frame" x="152" y="0.0" width="152" height="28"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="oHX-t8-b44">
+                                <rect key="frame" x="8" y="8" width="288" height="12"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWk-6v-qri">
+                                        <rect key="frame" x="0.0" y="0.0" width="144" height="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Sb-2l-Fjt">
+                                        <rect key="frame" x="144" y="0.0" width="144" height="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                    </stackView>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="oHX-t8-b44" firstAttribute="leading" secondItem="kkc-pJ-e77" secondAttribute="leading" constant="8" id="09J-PZ-HvL"/>
+                            <constraint firstAttribute="trailing" secondItem="oHX-t8-b44" secondAttribute="trailing" constant="8" id="4Nv-6V-fQO"/>
+                            <constraint firstItem="oHX-t8-b44" firstAttribute="top" secondItem="kkc-pJ-e77" secondAttribute="top" constant="8" id="5Fe-2h-GZb"/>
+                            <constraint firstAttribute="bottom" secondItem="oHX-t8-b44" secondAttribute="bottom" constant="8" id="c5z-rc-kei"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="oHX-t8-b44" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="0J0-PN-ZWK"/>
-                    <constraint firstItem="oHX-t8-b44" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="70S-UR-SD9"/>
-                    <constraint firstAttribute="bottom" secondItem="oHX-t8-b44" secondAttribute="bottom" constant="8" id="Kwf-Xs-WTW"/>
-                    <constraint firstAttribute="trailing" secondItem="oHX-t8-b44" secondAttribute="trailing" constant="8" id="W4R-EU-eFa"/>
+                    <constraint firstItem="kkc-pJ-e77" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="4tE-gB-knO"/>
+                    <constraint firstAttribute="trailing" secondItem="kkc-pJ-e77" secondAttribute="trailing" constant="8" id="9s6-B9-iab"/>
+                    <constraint firstAttribute="bottom" secondItem="kkc-pJ-e77" secondAttribute="bottom" constant="8" id="Pbz-Fc-vFx"/>
+                    <constraint firstItem="kkc-pJ-e77" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="PhI-SL-LcB"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="country" destination="UWk-6v-qri" id="WoL-RH-4ta"/>
                 <outlet property="nationality" destination="0Sb-2l-Fjt" id="LRk-Fi-T4S"/>
+                <outlet property="viewInCell" destination="kkc-pJ-e77" id="Qma-4u-EBN"/>
             </connections>
             <point key="canvasLocation" x="141" y="141"/>
         </tableViewCell>

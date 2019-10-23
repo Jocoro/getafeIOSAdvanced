@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PersonalDataCell: UITableViewCell {
     
      static let cellIdentifier = String(describing: PersonalDataCell.self)
-
+    static let cellHeight: CGFloat = 160
     
+   @IBOutlet weak var viewInCell: UIView!
        @IBOutlet weak var imageInCell: UIImageView!
        @IBOutlet weak var name: UILabel!
        @IBOutlet weak var age: UILabel!
@@ -30,7 +32,9 @@ class PersonalDataCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+     viewInCell.configureShadows()
+     viewInCell.layer.cornerRadius = 8.0
+        
     }
     func configureCell(image: String? = nil, name: String? = nil, age: String? = nil, birthdate: Date? = nil, gender: String? = nil){
         let url = URL(string: image ?? "")
@@ -45,6 +49,7 @@ class PersonalDataCell: UITableViewCell {
         self.birthdate.text = "Birthdate: " + formatter.string(from: birthdate)
         }
         self.gender.text = gender
+        imageInCell.layer.cornerRadius = imageInCell.frame.height/2
     }
     
     

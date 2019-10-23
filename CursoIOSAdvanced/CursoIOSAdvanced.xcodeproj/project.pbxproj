@@ -49,6 +49,7 @@
 		D985E6BF2346512600C95E38 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D985E6BE2346512600C95E38 /* UsersViewController.swift */; };
 		D98DA555235A3C4600E5782F /* UsersSameCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DA553235A3C4600E5782F /* UsersSameCountryCell.swift */; };
 		D98DA556235A3C4600E5782F /* UsersSameCountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98DA554235A3C4600E5782F /* UsersSameCountryCell.xib */; };
+		D98E7EEA2360C913002499F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D98E7EE92360C913002499F5 /* GoogleService-Info.plist */; };
 		D99BDA19234E5136003B06E4 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = D99BDA18234E5136003B06E4 /* users.json */; };
 		D9D38AA2234CEEAD005B8659 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D38AA1234CEEAD005B8659 /* User.swift */; };
 /* End PBXBuildFile section */
@@ -99,6 +100,7 @@
 		D985E6BE2346512600C95E38 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		D98DA553235A3C4600E5782F /* UsersSameCountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersSameCountryCell.swift; sourceTree = "<group>"; };
 		D98DA554235A3C4600E5782F /* UsersSameCountryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersSameCountryCell.xib; sourceTree = "<group>"; };
+		D98E7EE92360C913002499F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D99BDA18234E5136003B06E4 /* users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
 		D9C22F5423465831009CB68B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9D38AA1234CEEAD005B8659 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				D9C22F5423465831009CB68B /* Info.plist */,
+				D98E7EE92360C913002499F5 /* GoogleService-Info.plist */,
 				D92ACD2A234665A40022ACE0 /* Extension */,
 				D985E6B62346445300C95E38 /* App */,
 				D985E6B72346446800C95E38 /* Resources */,
@@ -326,6 +329,7 @@
 				D90E02B2234523F000E45C38 /* Frameworks */,
 				D90E02B3234523F000E45C38 /* Resources */,
 				715FF6E67DC8F7AD3BB1ADBB /* [CP] Embed Pods Frameworks */,
+				D9646EF62360D64100E37900 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -376,6 +380,7 @@
 			files = (
 				D90E02C5234523F900E45C38 /* LaunchScreen.storyboard in Resources */,
 				D9844EA1234667CE009A76E5 /* PersonCollectionViewCell.xib in Resources */,
+				D98E7EEA2360C913002499F5 /* GoogleService-Info.plist in Resources */,
 				D92ACD28234662A10022ACE0 /* PersonTableViewCell.xib in Resources */,
 				D9828A62235760E9007D5622 /* MapCell.xib in Resources */,
 				D90E02C2234523F900E45C38 /* Assets.xcassets in Resources */,
@@ -432,6 +437,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		D9646EF62360D64100E37900 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
