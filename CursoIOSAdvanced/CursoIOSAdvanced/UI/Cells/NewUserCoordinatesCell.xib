@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewUserCoordinatesCell" rowHeight="263" id="KGk-i7-Jjw" customClass="NewUserCoordinatesCell" customModule="CursoIOSAdvanced" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="263"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="263"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VFa-qu-OIw">
+                        <rect key="frame" x="8" y="8" width="304" height="88"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="9SI-Gn-nIN">
+                                <rect key="frame" x="0.0" y="0.0" width="152" height="88"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latitude:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6a-cj-XPV">
+                                        <rect key="frame" x="0.0" y="0.0" width="152" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longitude:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3G-B9-Z18">
+                                        <rect key="frame" x="0.0" y="44" width="152" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Z5e-4n-OWN">
+                                <rect key="frame" x="152" y="0.0" width="152" height="88"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xig-6k-dJw">
+                                        <rect key="frame" x="0.0" y="0.0" width="152" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dGD-vd-aWy" customClass="NewUseNameViewCell">
+                                        <rect key="frame" x="0.0" y="44" width="152" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="88" id="YGX-po-2zG"/>
+                        </constraints>
+                    </stackView>
+                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Kvj-uu-7R5">
+                        <rect key="frame" x="8" y="104" width="304" height="151"/>
+                    </mapView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Kvj-uu-7R5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="0Mf-87-fch"/>
+                    <constraint firstItem="Kvj-uu-7R5" firstAttribute="top" secondItem="VFa-qu-OIw" secondAttribute="bottom" constant="8" id="GGY-tC-uv6"/>
+                    <constraint firstAttribute="trailing" secondItem="Kvj-uu-7R5" secondAttribute="trailing" constant="8" id="J5n-NU-dwz"/>
+                    <constraint firstItem="VFa-qu-OIw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="WSO-ZW-S5e"/>
+                    <constraint firstAttribute="bottom" secondItem="Kvj-uu-7R5" secondAttribute="bottom" constant="8" id="ZCn-d8-Qa2"/>
+                    <constraint firstAttribute="trailing" secondItem="VFa-qu-OIw" secondAttribute="trailing" constant="8" id="bvG-Gq-Zyi"/>
+                    <constraint firstItem="VFa-qu-OIw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="zvO-oL-XdT"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="latitude" destination="Xig-6k-dJw" id="Rcx-UH-Nry"/>
+                <outlet property="latitudeLabel" destination="u6a-cj-XPV" id="LS6-Tx-5Rx"/>
+                <outlet property="longitude" destination="dGD-vd-aWy" id="RZd-ES-AYp"/>
+                <outlet property="longitudeLabel" destination="D3G-B9-Z18" id="sad-We-BO6"/>
+                <outlet property="map" destination="Kvj-uu-7R5" id="jkj-Hr-2px"/>
+            </connections>
+            <point key="canvasLocation" x="115.94202898550725" y="157.03125"/>
+        </tableViewCell>
+    </objects>
+</document>

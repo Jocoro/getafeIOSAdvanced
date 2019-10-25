@@ -28,11 +28,15 @@
 		D90E02C0234523F000E45C38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90E02BE234523F000E45C38 /* Main.storyboard */; };
 		D90E02C2234523F900E45C38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D90E02C1234523F900E45C38 /* Assets.xcassets */; };
 		D90E02C5234523F900E45C38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90E02C3234523F900E45C38 /* LaunchScreen.storyboard */; };
+		D911CD2E2361F6D200A30306 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D911CD2D2361F6D200A30306 /* NewUserViewController.swift */; };
+		D911CD312362116A00A30306 /* NewUserNameViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D911CD2F2362116A00A30306 /* NewUserNameViewCell.swift */; };
+		D911CD322362116A00A30306 /* NewUserNameViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D911CD302362116A00A30306 /* NewUserNameViewCell.xib */; };
 		D92ACD27234662A10022ACE0 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92ACD25234662A10022ACE0 /* PersonTableViewCell.swift */; };
 		D92ACD28234662A10022ACE0 /* PersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D92ACD26234662A10022ACE0 /* PersonTableViewCell.xib */; };
 		D92ACD2C234665C70022ACE0 /* UIViews+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92ACD2B234665C70022ACE0 /* UIViews+Utils.swift */; };
 		D97D1B77234B893800E0BE4B /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97D1B76234B893800E0BE4B /* DataBaseManager.swift */; };
 		D97D1B79234BAEBE00E0BE4B /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97D1B78234BAEBE00E0BE4B /* ApiManager.swift */; };
+		D9819E912361EA41005ECB8A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9819E932361EA41005ECB8A /* Localizable.strings */; };
 		D9828A5023575E1F007D5622 /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9828A4F23575E1F007D5622 /* UserDetail.swift */; };
 		D9828A5223575F2C007D5622 /* UserDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9828A5123575F2C007D5622 /* UserDetail.storyboard */; };
 		D9828A5523576088007D5622 /* PersonalDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9828A5323576088007D5622 /* PersonalDataCell.swift */; };
@@ -47,6 +51,20 @@
 		D9844EA1234667CE009A76E5 /* PersonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9844E9F234667CE009A76E5 /* PersonCollectionViewCell.xib */; };
 		D985E6BD23464B1900C95E38 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D985E6BC23464B1900C95E38 /* Splash.storyboard */; };
 		D985E6BF2346512600C95E38 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D985E6BE2346512600C95E38 /* UsersViewController.swift */; };
+		D98B53552362162F002135AC /* NewUserEmailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98B53532362162F002135AC /* NewUserEmailCell.swift */; };
+		D98B53562362162F002135AC /* NewUserEmailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98B53542362162F002135AC /* NewUserEmailCell.xib */; };
+		D98B535923621660002135AC /* NewUserGenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98B535723621660002135AC /* NewUserGenderCell.swift */; };
+		D98B535A23621660002135AC /* NewUserGenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98B535823621660002135AC /* NewUserGenderCell.xib */; };
+		D98B535D2362168C002135AC /* NewUserBirthdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98B535B2362168C002135AC /* NewUserBirthdateCell.swift */; };
+		D98B535E2362168C002135AC /* NewUserBirthdateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98B535C2362168C002135AC /* NewUserBirthdateCell.xib */; };
+		D98B5361236216E6002135AC /* NewUserNationalityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98B535F236216E6002135AC /* NewUserNationalityCell.swift */; };
+		D98B5362236216E6002135AC /* NewUserNationalityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98B5360236216E6002135AC /* NewUserNationalityCell.xib */; };
+		D98B536523621708002135AC /* NewUserCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98B536323621708002135AC /* NewUserCountryCell.swift */; };
+		D98B536623621708002135AC /* NewUserCountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98B536423621708002135AC /* NewUserCountryCell.xib */; };
+		D98B536923621731002135AC /* NewUserCoordinatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98B536723621731002135AC /* NewUserCoordinatesCell.swift */; };
+		D98B536A23621731002135AC /* NewUserCoordinatesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98B536823621731002135AC /* NewUserCoordinatesCell.xib */; };
+		D98B53712362203D002135AC /* GenderOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98B536F2362203D002135AC /* GenderOptionCell.swift */; };
+		D98B53722362203D002135AC /* GenderOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98B53702362203D002135AC /* GenderOptionCell.xib */; };
 		D98DA555235A3C4600E5782F /* UsersSameCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DA553235A3C4600E5782F /* UsersSameCountryCell.swift */; };
 		D98DA556235A3C4600E5782F /* UsersSameCountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98DA554235A3C4600E5782F /* UsersSameCountryCell.xib */; };
 		D98E7EEA2360C913002499F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D98E7EE92360C913002499F5 /* GoogleService-Info.plist */; };
@@ -79,11 +97,16 @@
 		D90E02BF234523F000E45C38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D90E02C1234523F900E45C38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D90E02C4234523F900E45C38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D911CD2D2361F6D200A30306 /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
+		D911CD2F2362116A00A30306 /* NewUserNameViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserNameViewCell.swift; sourceTree = "<group>"; };
+		D911CD302362116A00A30306 /* NewUserNameViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewUserNameViewCell.xib; sourceTree = "<group>"; };
 		D92ACD25234662A10022ACE0 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
 		D92ACD26234662A10022ACE0 /* PersonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonTableViewCell.xib; sourceTree = "<group>"; };
 		D92ACD2B234665C70022ACE0 /* UIViews+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViews+Utils.swift"; sourceTree = "<group>"; };
 		D97D1B76234B893800E0BE4B /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		D97D1B78234BAEBE00E0BE4B /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		D9819E922361EA41005ECB8A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D9819E942361EA90005ECB8A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9828A4F23575E1F007D5622 /* UserDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
 		D9828A5123575F2C007D5622 /* UserDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserDetail.storyboard; sourceTree = "<group>"; };
 		D9828A5323576088007D5622 /* PersonalDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataCell.swift; sourceTree = "<group>"; };
@@ -98,6 +121,20 @@
 		D9844E9F234667CE009A76E5 /* PersonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCollectionViewCell.xib; sourceTree = "<group>"; };
 		D985E6BC23464B1900C95E38 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		D985E6BE2346512600C95E38 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		D98B53532362162F002135AC /* NewUserEmailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserEmailCell.swift; sourceTree = "<group>"; };
+		D98B53542362162F002135AC /* NewUserEmailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewUserEmailCell.xib; sourceTree = "<group>"; };
+		D98B535723621660002135AC /* NewUserGenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserGenderCell.swift; sourceTree = "<group>"; };
+		D98B535823621660002135AC /* NewUserGenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewUserGenderCell.xib; sourceTree = "<group>"; };
+		D98B535B2362168C002135AC /* NewUserBirthdateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserBirthdateCell.swift; sourceTree = "<group>"; };
+		D98B535C2362168C002135AC /* NewUserBirthdateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewUserBirthdateCell.xib; sourceTree = "<group>"; };
+		D98B535F236216E6002135AC /* NewUserNationalityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserNationalityCell.swift; sourceTree = "<group>"; };
+		D98B5360236216E6002135AC /* NewUserNationalityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewUserNationalityCell.xib; sourceTree = "<group>"; };
+		D98B536323621708002135AC /* NewUserCountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserCountryCell.swift; sourceTree = "<group>"; };
+		D98B536423621708002135AC /* NewUserCountryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewUserCountryCell.xib; sourceTree = "<group>"; };
+		D98B536723621731002135AC /* NewUserCoordinatesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserCoordinatesCell.swift; sourceTree = "<group>"; };
+		D98B536823621731002135AC /* NewUserCoordinatesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewUserCoordinatesCell.xib; sourceTree = "<group>"; };
+		D98B536F2362203D002135AC /* GenderOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderOptionCell.swift; sourceTree = "<group>"; };
+		D98B53702362203D002135AC /* GenderOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenderOptionCell.xib; sourceTree = "<group>"; };
 		D98DA553235A3C4600E5782F /* UsersSameCountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersSameCountryCell.swift; sourceTree = "<group>"; };
 		D98DA554235A3C4600E5782F /* UsersSameCountryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersSameCountryCell.xib; sourceTree = "<group>"; };
 		D98E7EE92360C913002499F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -230,6 +267,22 @@
 				D9828A60235760E9007D5622 /* MapCell.xib */,
 				D98DA553235A3C4600E5782F /* UsersSameCountryCell.swift */,
 				D98DA554235A3C4600E5782F /* UsersSameCountryCell.xib */,
+				D911CD2F2362116A00A30306 /* NewUserNameViewCell.swift */,
+				D911CD302362116A00A30306 /* NewUserNameViewCell.xib */,
+				D98B53532362162F002135AC /* NewUserEmailCell.swift */,
+				D98B53542362162F002135AC /* NewUserEmailCell.xib */,
+				D98B535723621660002135AC /* NewUserGenderCell.swift */,
+				D98B535823621660002135AC /* NewUserGenderCell.xib */,
+				D98B535B2362168C002135AC /* NewUserBirthdateCell.swift */,
+				D98B535C2362168C002135AC /* NewUserBirthdateCell.xib */,
+				D98B535F236216E6002135AC /* NewUserNationalityCell.swift */,
+				D98B5360236216E6002135AC /* NewUserNationalityCell.xib */,
+				D98B536323621708002135AC /* NewUserCountryCell.swift */,
+				D98B536423621708002135AC /* NewUserCountryCell.xib */,
+				D98B536723621731002135AC /* NewUserCoordinatesCell.swift */,
+				D98B536823621731002135AC /* NewUserCoordinatesCell.xib */,
+				D98B536F2362203D002135AC /* GenderOptionCell.swift */,
+				D98B53702362203D002135AC /* GenderOptionCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -257,6 +310,7 @@
 				D99BDA18234E5136003B06E4 /* users.json */,
 				D90BD66A234794F100A1FF35 /* loading.json */,
 				D90E02C1234523F900E45C38 /* Assets.xcassets */,
+				D9819E932361EA41005ECB8A /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -288,6 +342,7 @@
 				D90E02BC234523F000E45C38 /* SplashViewController.swift */,
 				D985E6BE2346512600C95E38 /* UsersViewController.swift */,
 				D9828A4F23575E1F007D5622 /* UserDetail.swift */,
+				D911CD2D2361F6D200A30306 /* NewUserViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -362,6 +417,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = D90E02AC234523F000E45C38;
 			productRefGroup = D90E02B6234523F000E45C38 /* Products */;
@@ -378,19 +434,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D98B536A23621731002135AC /* NewUserCoordinatesCell.xib in Resources */,
+				D98B536623621708002135AC /* NewUserCountryCell.xib in Resources */,
+				D98B53562362162F002135AC /* NewUserEmailCell.xib in Resources */,
+				D98B535E2362168C002135AC /* NewUserBirthdateCell.xib in Resources */,
 				D90E02C5234523F900E45C38 /* LaunchScreen.storyboard in Resources */,
 				D9844EA1234667CE009A76E5 /* PersonCollectionViewCell.xib in Resources */,
+				D98B5362236216E6002135AC /* NewUserNationalityCell.xib in Resources */,
 				D98E7EEA2360C913002499F5 /* GoogleService-Info.plist in Resources */,
 				D92ACD28234662A10022ACE0 /* PersonTableViewCell.xib in Resources */,
 				D9828A62235760E9007D5622 /* MapCell.xib in Resources */,
 				D90E02C2234523F900E45C38 /* Assets.xcassets in Resources */,
+				D98B53722362203D002135AC /* GenderOptionCell.xib in Resources */,
 				D99BDA19234E5136003B06E4 /* users.json in Resources */,
 				D9828A5A235760B8007D5622 /* CountryCell.xib in Resources */,
 				D9828A5E235760D5007D5622 /* ContactDataCell.xib in Resources */,
 				D90BD66B234794F100A1FF35 /* loading.json in Resources */,
 				D90E02C0234523F000E45C38 /* Main.storyboard in Resources */,
+				D911CD322362116A00A30306 /* NewUserNameViewCell.xib in Resources */,
+				D98B535A23621660002135AC /* NewUserGenderCell.xib in Resources */,
 				D9828A5623576088007D5622 /* PersonalDataCell.xib in Resources */,
 				D985E6BD23464B1900C95E38 /* Splash.storyboard in Resources */,
+				D9819E912361EA41005ECB8A /* Localizable.strings in Resources */,
 				D9828A5223575F2C007D5622 /* UserDetail.storyboard in Resources */,
 				D98DA556235A3C4600E5782F /* UsersSameCountryCell.xib in Resources */,
 			);
@@ -463,6 +528,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D90E02BD234523F000E45C38 /* SplashViewController.swift in Sources */,
+				D911CD312362116A00A30306 /* NewUserNameViewCell.swift in Sources */,
+				D98B53552362162F002135AC /* NewUserEmailCell.swift in Sources */,
 				D90BD68B2347CC7200A1FF35 /* DataManager.swift in Sources */,
 				D92ACD27234662A10022ACE0 /* PersonTableViewCell.swift in Sources */,
 				D92ACD2C234665C70022ACE0 /* UIViews+Utils.swift in Sources */,
@@ -470,6 +537,7 @@
 				D90BD6832347C72200A1FF35 /* UserLoginDTO.swift in Sources */,
 				D97D1B79234BAEBE00E0BE4B /* ApiManager.swift in Sources */,
 				D90BD6792347C42100A1FF35 /* UserNameDTO.swift in Sources */,
+				D98B5361236216E6002135AC /* NewUserNationalityCell.swift in Sources */,
 				D90BD67F2347C63300A1FF35 /* StreetDTO.swift in Sources */,
 				D90BD6852347C7A700A1FF35 /* UserDobDTO.swift in Sources */,
 				D90BD6772347C26A00A1FF35 /* UserDTO.swift in Sources */,
@@ -477,17 +545,23 @@
 				D90BD6892347C86100A1FF35 /* UserPictureDTO.swift in Sources */,
 				D9828A5023575E1F007D5622 /* UserDetail.swift in Sources */,
 				D9828A5523576088007D5622 /* PersonalDataCell.swift in Sources */,
+				D98B535D2362168C002135AC /* NewUserBirthdateCell.swift in Sources */,
 				D90BD6732347BEFB00A1FF35 /* UsersDTO.swift in Sources */,
 				D985E6BF2346512600C95E38 /* UsersViewController.swift in Sources */,
 				D90BD67B2347C4FD00A1FF35 /* UserLocationDTO.swift in Sources */,
 				D90BD67D2347C5F300A1FF35 /* CoordinatesDTO.swift in Sources */,
 				D90E02B9234523F000E45C38 /* AppDelegate.swift in Sources */,
 				D98DA555235A3C4600E5782F /* UsersSameCountryCell.swift in Sources */,
+				D98B53712362203D002135AC /* GenderOptionCell.swift in Sources */,
 				D9844EA0234667CE009A76E5 /* PersonCollectionViewCell.swift in Sources */,
+				D911CD2E2361F6D200A30306 /* NewUserViewController.swift in Sources */,
 				D9828A5D235760D5007D5622 /* ContactDataCell.swift in Sources */,
 				D90E02BB234523F000E45C38 /* SceneDelegate.swift in Sources */,
 				D90BD6812347C68B00A1FF35 /* TimezoneDTO.swift in Sources */,
 				D90BD6752347C0F400A1FF35 /* InfoDTO.swift in Sources */,
+				D98B536923621731002135AC /* NewUserCoordinatesCell.swift in Sources */,
+				D98B535923621660002135AC /* NewUserGenderCell.swift in Sources */,
+				D98B536523621708002135AC /* NewUserCountryCell.swift in Sources */,
 				D9828A59235760B8007D5622 /* CountryCell.swift in Sources */,
 				D9828A61235760E9007D5622 /* MapCell.swift in Sources */,
 				D9D38AA2234CEEAD005B8659 /* User.swift in Sources */,
@@ -513,6 +587,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		D9819E932361EA41005ECB8A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9819E922361EA41005ECB8A /* en */,
+				D9819E942361EA90005ECB8A /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -520,6 +603,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -580,6 +664,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

@@ -13,9 +13,9 @@ class UserDetail: UIViewController {
     @IBOutlet var deleteButton : UIButton!
     
     @IBAction func onButtonPressed(_ sender: UIButton){
-        let alert = UIAlertController(title: "Borrar datos del usuario", message: "Vas a borrar los datos del usuario, ¿estás seguro?",
+        let alert = UIAlertController(title: NSLocalizedString("alert_delete", comment: ""), message: NSLocalizedString("confirmation_message", comment: ""),
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Eliminar", style: .destructive, handler: {[weak self] _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("delete", comment: ""), style: .destructive, handler: {[weak self] _ in
             //Elimina el profesor de la lista de todos los profesores
             guard let id = self?.user?.id else {
                 return
@@ -29,7 +29,7 @@ class UserDetail: UIViewController {
             
             
         }))
-        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel))
         
         present(alert, animated: true)
     }

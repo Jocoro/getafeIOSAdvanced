@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  CursoIOSAdvanced
+
+  Created by Dev2 on 24/10/2019.
+  Copyright © 2019 Dev2. All rights reserved.
+*/
+"alert_delete" = "Delete user";
+"confirmation_message" = "Delete user, ok?";
+"delete" = "Delete";
+"cancel" = "Cancel";

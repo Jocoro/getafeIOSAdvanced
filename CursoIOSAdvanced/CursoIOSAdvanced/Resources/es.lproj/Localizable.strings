@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  CursoIOSAdvanced
+
+  Created by Dev2 on 24/10/2019.
+  Copyright © 2019 Dev2. All rights reserved.
+*/
+"alert_delete" = "Borrar datos del usuario";
+"confirmation_message" = "Vas a borrar los datos del usuario, ¿estás seguro?";
+"delete" = "Eliminar";
+"cancel" = "Cancelar";

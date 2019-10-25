@@ -82,6 +82,16 @@
                     </view>
                     <navigationItem key="navigationItem" title="Users" id="LNU-di-dIQ">
                         <barButtonItem key="backBarButtonItem" title=" " id="8fr-sm-lm1"/>
+                        <barButtonItem key="rightBarButtonItem" title=" " image="plus.circle" catalog="system" style="plain" id="LQ7-eF-iYO">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dY8-ef-N92">
+                                <rect key="frame" x="320" y="11" width="74" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="plus.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="onAddUserPressed:" destination="6e5-9M-4Db" eventType="touchUpInside" id="MX9-s8-Bw0"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="7Gp-8P-HS9" id="o1X-hz-chb"/>
@@ -90,6 +100,7 @@
                         <outlet property="tableView" destination="5Oj-cb-Sxu" id="gPG-Hq-Bv5"/>
                         <outlet property="totalUsers" destination="20D-km-e6U" id="6nD-Oe-DPp"/>
                         <segue destination="9bo-1S-VIt" kind="show" identifier="DetailSegue" id="we0-vI-Rc7"/>
+                        <segue destination="uaG-n3-Yka" kind="show" identifier="NewUser" id="Vpq-DW-GsW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gov-qO-VFF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -105,6 +116,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hlt-Jv-shV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2671.0144927536235" y="158.70535714285714"/>
+        </scene>
+        <!--New User View Controller-->
+        <scene sceneID="6bL-oj-3rL">
+            <objects>
+                <viewController id="uaG-n3-Yka" customClass="NewUserViewController" customModule="CursoIOSAdvanced" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fS0-dO-WUW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LK8-tZ-HEx">
+                                <rect key="frame" x="8" y="96" width="398" height="758"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5T-LX-vvf">
+                                <rect key="frame" x="8" y="802" width="398" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="1HH-Cg-X2W"/>
+                                </constraints>
+                                <state key="normal" title="Add User"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="LK8-tZ-HEx" firstAttribute="top" secondItem="DMx-tb-gj3" secondAttribute="top" constant="8" id="6k5-LS-gRa"/>
+                            <constraint firstItem="DMx-tb-gj3" firstAttribute="trailing" secondItem="LK8-tZ-HEx" secondAttribute="trailing" constant="8" id="AME-la-Oxp"/>
+                            <constraint firstItem="q5T-LX-vvf" firstAttribute="leading" secondItem="DMx-tb-gj3" secondAttribute="leading" constant="8" id="YoK-Bj-rPq"/>
+                            <constraint firstItem="q5T-LX-vvf" firstAttribute="top" secondItem="LK8-tZ-HEx" secondAttribute="bottom" constant="8" id="Yw8-eT-xll"/>
+                            <constraint firstItem="LK8-tZ-HEx" firstAttribute="leading" secondItem="DMx-tb-gj3" secondAttribute="leading" constant="8" id="aYW-xf-qWX"/>
+                            <constraint firstItem="DMx-tb-gj3" firstAttribute="trailing" secondItem="q5T-LX-vvf" secondAttribute="trailing" constant="8" id="dYT-PV-QBm"/>
+                            <constraint firstItem="DMx-tb-gj3" firstAttribute="bottom" secondItem="q5T-LX-vvf" secondAttribute="bottom" constant="8" id="eIQ-ng-oeX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DMx-tb-gj3"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gMt-Wa-2PD"/>
+                    <connections>
+                        <outlet property="addUser" destination="q5T-LX-vvf" id="j6i-dN-9VH"/>
+                        <outlet property="tableView" destination="LK8-tZ-HEx" id="gSr-qc-IrD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Mg-Gj-YYQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3211.594202898551" y="190.84821428571428"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="smK-Ob-XMM">
@@ -128,5 +181,6 @@
     <resources>
         <image name="ic-collectionselector" width="16" height="16"/>
         <image name="ic-tableselector" width="10.666666984558105" height="10.666666984558105"/>
+        <image name="plus.circle" catalog="system" width="64" height="62"/>
     </resources>
 </document>

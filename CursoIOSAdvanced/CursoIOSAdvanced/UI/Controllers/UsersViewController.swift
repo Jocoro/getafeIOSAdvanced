@@ -28,7 +28,9 @@ class UsersViewController: UIViewController {
         loadSortingLabel()
         loadUsers(forceUpdate: false)
     }
-    
+    @IBAction func onAddUserPressed(_ sender: UIButton){
+        self.performSegue(withIdentifier: "NewUser", sender: sender)
+    }
     var users : [User] = []
  
     
@@ -252,7 +254,9 @@ extension UsersViewController{
                 let country = users[indexPath.row].country
                 destination.usersSameCountry = users.filter{$0.country == country && $0.id != users[indexPath.row].id}
              }
+   
          }
+    
     
    
 }
