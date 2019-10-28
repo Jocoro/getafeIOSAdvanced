@@ -135,6 +135,9 @@
                                     <constraint firstAttribute="height" constant="52" id="1HH-Cg-X2W"/>
                                 </constraints>
                                 <state key="normal" title="Add User"/>
+                                <connections>
+                                    <action selector="onButtonPressed:" destination="uaG-n3-Yka" eventType="touchUpInside" id="L4H-Cn-hdQ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

@@ -68,6 +68,7 @@
             <connections>
                 <outlet property="firstName" destination="8V8-bS-aU5" id="m2Z-8P-E4E"/>
                 <outlet property="firstNameLabel" destination="I5s-D8-PL5" id="o2y-RC-AcH"/>
+                <outlet property="imageInCell" destination="LUz-7l-qrr" id="voc-M8-HuX"/>
                 <outlet property="lastName" destination="GMY-4I-vuA" id="ZhZ-n5-tte"/>
                 <outlet property="lastNameLabel" destination="frn-fr-T6n" id="eor-ik-JeB"/>
             </connections>

@@ -48,6 +48,20 @@ class DataBaseManager{
         realm.delete(user)
         }
     }
+    func addUser(avatar: String? = nil,
+    firstname: String? = nil,
+    lastname: String? = nil,
+    email: String? = nil,
+    gender: String? = nil,
+    birthdate: Date? = nil,
+    country: String? = nil,
+    latitude:  String? = nil,
+    longitude: String? = nil,
+    nationality: String? = nil){
+        let uuid = String(Double.random(in: 0...100))
+       let userDAO = UserDAO(uuid: uuid, avatar: avatar, firstname: firstname, lastname: lastname, email: email, gender: gender, birthdate: birthdate, country: country, latitude: latitude, longitude: longitude, nationality: nationality)
+       save(user: userDAO)
+    }
 }
 extension DataBaseManager {
     var segmentMode: String {

@@ -33,10 +33,10 @@ class NewUserViewController: UIViewController {
                                           preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Add", style: .destructive, handler: {[weak self] _ in
                 //Elimina el profesor de la lista de todos los profesores
-               
-              
-               
-                     self?.navigationController?.popViewController(animated: true)
+            
+                self?.add(avatar: self?.avatar, firstname: self?.firstname, lastname: self?.lastname, email: self?.email, gender: self?.gender, birthdate: self?.birthdate, country: self?.country, latitude: self?.latitude, longitude: self?.longitude, nationality: self?.nationality){_ in
+               print("añadido")
+                    self?.navigationController?.popViewController(animated: true)}
                 
               
                 
@@ -48,12 +48,88 @@ class NewUserViewController: UIViewController {
             
             present(alert, animated: true)
         }
-        func delete(user id: String, completion: @escaping ServiceCompletion){
+    var avatar: String? {
+        guard let row = cellTypes.firstIndex(of: .newUserName), let _ = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? NewUserNameViewCell else {
+            return nil
+        }
+        return "https://randomuser.me/api/portraits/women/49.jpg"
+    }
+    var firstname: String? {
+        guard let row = cellTypes.firstIndex(of: .newUserName), let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? NewUserNameViewCell, let firstname = cell.firstName.text else {
+            return nil
+        }
+        
+        return firstname
+    }
+    var lastname: String? {
+        guard let row = cellTypes.firstIndex(of: .newUserName), let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? NewUserNameViewCell, let lastname = cell.lastName.text else {
+            return nil
+        }
+        
+        return lastname
+    }
+    var email: String? {
+           guard let row = cellTypes.firstIndex(of: .newUserEmail), let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? NewUserEmailCell, let email = cell.email.text else {
+               return nil
+           }
+           
+           return email
+       }
+    var gender: String? {
+        guard let row = cellTypes.firstIndex(of: .newUserGender), let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? NewUserGenderCell, let gender = cell.gender else {
+            return nil
+        }
+        
+        return gender
+    }
+    var birthdate: Date? {
+        guard let row = cellTypes.firstIndex(of: .newUserBirthdate), let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? NewUserBirthdateCell  else {
+            return nil
+        }
+        
+        return cell.birthdate.date
+    }
+    var nationality: String? {
+        guard let row = cellTypes.firstIndex(of: .newUserNationality), let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? NewUserNationalityCell, let nationality = cell.nationality else {
+            return nil
+        }
+        
+        return nationality
+    }
+    var country: String? {
+        guard let row = cellTypes.firstIndex(of: .newUserCountry), let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? NewUserCountryCell else {
+            return nil
+        }
+        
+        return cell.selectedCountry
+    }
+    var latitude: String? {
+              guard let row = cellTypes.firstIndex(of: .newUserCoordinates), let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? NewUserCoordinatesCell, let latitude = cell.latitude.text else {
+                  return nil
+              }
+              
+              return latitude
+          }
+    var longitude: String? {
+                 guard let row = cellTypes.firstIndex(of: .newUserCoordinates), let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? NewUserCoordinatesCell, let longitude = cell.longitude.text else {
+                     return nil
+                 }
+                 
+                 return longitude
+             }
+        func add(avatar: String? = nil,
+        firstname: String? = nil,
+        lastname: String? = nil,
+        email: String? = nil,
+        gender: String? = nil,
+        birthdate: Date? = nil,
+        country: String? = nil,
+        latitude:  String? = nil,
+        longitude: String? = nil,
+        nationality: String? = nil, completion: @escaping ServiceCompletion){
             DispatchQueue.global(qos: .background).async {
-                guard let userDB = DataBaseManager.shared.user(id: id) else {
-                    return
-                }
-                DataBaseManager.shared.delete(user: userDB)
+                
+                DataBaseManager.shared.addUser(avatar: avatar, firstname: firstname, lastname: lastname, email: email, gender: gender, birthdate: birthdate, country: country, latitude: latitude, longitude: longitude, nationality: nationality)
                 DispatchQueue.main.async {
                     completion(.success(data: nil))
                 
@@ -75,6 +151,7 @@ class NewUserViewController: UIViewController {
     private var cellTypes = [NewUserDCellType.newUserName, NewUserDCellType.newUserEmail, NewUserDCellType.newUserGender,
                              NewUserDCellType.newUserBirthdate, NewUserDCellType.newUserNationality, NewUserDCellType.newUserCountry,
                              NewUserDCellType.newUserCoordinates]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Do any additional setup after loading the view.
