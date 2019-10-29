@@ -16,6 +16,8 @@ class NewUserBirthdateCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         birthdate.datePickerMode = .date
+        birthdate.maximumDate = Date()
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

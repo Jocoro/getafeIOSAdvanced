@@ -9,9 +9,9 @@
 import UIKit
 
 class NewUserViewController: UIViewController {
-     @IBOutlet var tableView : UITableView!
-  
-
+    @IBOutlet var tableView : UITableView!
+    
+    
     //Segunda celda
     // @objc dynamic var email : String?
     //Tercera celda
@@ -25,29 +25,23 @@ class NewUserViewController: UIViewController {
     //Septima celda
     //@objc dynamic var latitude : String?
     //@objc dynamic var longitude : String?
-   
+    
     @IBOutlet weak var addUser : UIButton!
     
     @IBAction func onButtonPressed(_ sender: UIButton){
-            let alert = UIAlertController(title: "Add User", message: "add this User?",
-                                          preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Add", style: .destructive, handler: {[weak self] _ in
-                //Elimina el profesor de la lista de todos los profesores
+        let alert = UIAlertController(title: "Add User", message: "add this User?",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Add", style: .destructive, handler: {[weak self] _ in
+            //Elimina el profesor de la lista de todos los profesores
             
-                self?.add(avatar: self?.avatar, firstname: self?.firstname, lastname: self?.lastname, email: self?.email, gender: self?.gender, birthdate: self?.birthdate, country: self?.country, latitude: self?.latitude, longitude: self?.longitude, nationality: self?.nationality){_ in
-               print("añadido")
-                    self?.navigationController?.popViewController(animated: true)}
-                
-              
-                
-         
-                
-                
+            self?.add(avatar: self?.avatar, firstname: self?.firstname, lastname: self?.lastname, email: self?.email, gender: self?.gender, birthdate: self?.birthdate, country: self?.country, latitude: self?.latitude, longitude: self?.longitude, nationality: self?.nationality){_ in
+                print("añadido")
+                self?.navigationController?.popViewController(animated: true)}
             }))
-            alert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel))
-            
-            present(alert, animated: true)
-        }
+        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel))
+        
+        present(alert, animated: true)
+    }
     var avatar: String? {
         guard let row = cellTypes.firstIndex(of: .newUserName), let _ = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? NewUserNameViewCell else {
             return nil
@@ -69,12 +63,12 @@ class NewUserViewController: UIViewController {
         return lastname
     }
     var email: String? {
-           guard let row = cellTypes.firstIndex(of: .newUserEmail), let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? NewUserEmailCell, let email = cell.email.text else {
-               return nil
-           }
-           
-           return email
-       }
+        guard let row = cellTypes.firstIndex(of: .newUserEmail), let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? NewUserEmailCell, let email = cell.email.text else {
+            return nil
+        }
+        
+        return email
+    }
     var gender: String? {
         guard let row = cellTypes.firstIndex(of: .newUserGender), let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? NewUserGenderCell, let gender = cell.gender else {
             return nil
@@ -104,34 +98,34 @@ class NewUserViewController: UIViewController {
         return cell.selectedCountry
     }
     var latitude: String? {
-              guard let row = cellTypes.firstIndex(of: .newUserCoordinates), let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? NewUserCoordinatesCell, let latitude = cell.latitude.text else {
-                  return nil
-              }
-              
-              return latitude
-          }
+        guard let row = cellTypes.firstIndex(of: .newUserCoordinates), let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? NewUserCoordinatesCell, let latitude = cell.latitude.text else {
+            return nil
+        }
+        
+        return latitude
+    }
     var longitude: String? {
-                 guard let row = cellTypes.firstIndex(of: .newUserCoordinates), let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? NewUserCoordinatesCell, let longitude = cell.longitude.text else {
-                     return nil
-                 }
-                 
-                 return longitude
-             }
-        func add(avatar: String? = nil,
-        firstname: String? = nil,
-        lastname: String? = nil,
-        email: String? = nil,
-        gender: String? = nil,
-        birthdate: Date? = nil,
-        country: String? = nil,
-        latitude:  String? = nil,
-        longitude: String? = nil,
-        nationality: String? = nil, completion: @escaping ServiceCompletion){
-            DispatchQueue.global(qos: .background).async {
-                
-                DataBaseManager.shared.addUser(avatar: avatar, firstname: firstname, lastname: lastname, email: email, gender: gender, birthdate: birthdate, country: country, latitude: latitude, longitude: longitude, nationality: nationality)
-                DispatchQueue.main.async {
-                    completion(.success(data: nil))
+        guard let row = cellTypes.firstIndex(of: .newUserCoordinates), let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? NewUserCoordinatesCell, let longitude = cell.longitude.text else {
+            return nil
+        }
+        
+        return longitude
+    }
+    func add(avatar: String? = nil,
+             firstname: String? = nil,
+             lastname: String? = nil,
+             email: String? = nil,
+             gender: String? = nil,
+             birthdate: Date? = nil,
+             country: String? = nil,
+             latitude:  String? = nil,
+             longitude: String? = nil,
+             nationality: String? = nil, completion: @escaping ServiceCompletion){
+        DispatchQueue.global(qos: .background).async {
+            
+            DataBaseManager.shared.addUser(avatar: avatar, firstname: firstname, lastname: lastname, email: email, gender: gender, birthdate: birthdate, country: country, latitude: latitude, longitude: longitude, nationality: nationality)
+            DispatchQueue.main.async {
+                completion(.success(data: nil))
                 
             }
         }
@@ -156,87 +150,136 @@ class NewUserViewController: UIViewController {
         super.viewDidLoad()
         //Do any additional setup after loading the view.
         configure(tableView: tableView)
-       
+        
     }
     
-  
+    
 }
 extension NewUserViewController: UITableViewDataSource, UITableViewDelegate{
-
-/// Configure table view
-func configure(tableView: UITableView){
-     enableCells()
-    //Margen inferior del tableview para el boton
-    tableView.contentInset = UIEdgeInsets(top: 0,left: 0,bottom: addUser.frame.height + 12,right: 0)
-    self.tableView.rowHeight = UITableView.automaticDimension
-    self.tableView.estimatedRowHeight = 200
-    tableView.dataSource = self
-    tableView.delegate = self
-    tableView.allowsSelection = false
-  
     
-    
-}
+    /// Configure table view
+    func configure(tableView: UITableView){
+        enableCells()
+        //Margen inferior del tableview para el boton
+        tableView.contentInset = UIEdgeInsets(top: 0,left: 0,bottom: addUser.frame.height + 12,right: 0)
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 200
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.allowsSelection = false
+        
+        
+        
+    }
     private func enableCells(){
-          //Tipos de celda que puede haber en el tableview
-          tableView.register(UINib(nibName: NewUserNameViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NewUserNameViewCell.cellIdentifier)
+        //Tipos de celda que puede haber en el tableview
+        tableView.register(UINib(nibName: NewUserNameViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NewUserNameViewCell.cellIdentifier)
         tableView.register(UINib(nibName: NewUserBirthdateCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NewUserBirthdateCell.cellIdentifier)
         tableView.register(UINib(nibName: NewUserEmailCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NewUserEmailCell.cellIdentifier)
         tableView.register(UINib(nibName: NewUserGenderCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NewUserGenderCell.cellIdentifier)
         tableView.register(UINib(nibName: NewUserNationalityCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NewUserNationalityCell.cellIdentifier)
-         tableView.register(UINib(nibName: NewUserCountryCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NewUserCountryCell.cellIdentifier)
-         tableView.register(UINib(nibName: NewUserCoordinatesCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NewUserCoordinatesCell.cellIdentifier)
-      }
-
-func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return cellTypes.count
-}
-
-func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-   
-    switch cellTypes[indexPath.row]{
+        tableView.register(UINib(nibName: NewUserCountryCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NewUserCountryCell.cellIdentifier)
+        tableView.register(UINib(nibName: NewUserCoordinatesCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NewUserCoordinatesCell.cellIdentifier)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cellTypes.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-    case .newUserName:
-        return tableView.dequeueReusableCell(withIdentifier: NewUserNameViewCell.cellIdentifier, for: indexPath)
-    case .newUserEmail:
-        return tableView.dequeueReusableCell(withIdentifier: NewUserEmailCell.cellIdentifier, for: indexPath)
-    case .newUserGender:
-        return tableView.dequeueReusableCell(withIdentifier: NewUserGenderCell.cellIdentifier, for: indexPath)
-    case .newUserBirthdate:
-        return tableView.dequeueReusableCell(withIdentifier: NewUserBirthdateCell.cellIdentifier, for: indexPath)
-    case .newUserNationality:
-        return tableView.dequeueReusableCell(withIdentifier: NewUserNationalityCell.cellIdentifier, for: indexPath)
-    case .newUserCountry:
-         return tableView.dequeueReusableCell(withIdentifier: NewUserCountryCell.cellIdentifier, for: indexPath)
-    case . newUserCoordinates:
-        return tableView.dequeueReusableCell(withIdentifier: NewUserCoordinatesCell.cellIdentifier, for: indexPath)
-    
+        switch cellTypes[indexPath.row]{
+            
+        case .newUserName:
+            return cellNewUserName(tableView: tableView, indexPath: indexPath)
+        case .newUserEmail:
+            return cellNewUserEmail(tableView: tableView, indexPath: indexPath)
+        case .newUserGender:
+            return cellNewUserGender(tableView: tableView, indexPath: indexPath)
+        case .newUserBirthdate:
+            return cellNewUserBirthdate(tableView: tableView, indexPath: indexPath)
+        case .newUserNationality:
+            return cellNewUserNationality(tableView: tableView, indexPath: indexPath)
+        case .newUserCountry:
+            return cellNewCountry(tableView: tableView, indexPath: indexPath)
+        case . newUserCoordinates:
+            return cellNewUserCoordinates(tableView: tableView, indexPath: indexPath)
+            
+        }
+        
     }
     
-}
-
-
-
-//Tamaño de cada celda
-func tableView(_ tableView: UITableView, heightForRowAt: IndexPath) -> CGFloat{
-    switch cellTypes[heightForRowAt.row]{
-    case .newUserName:
-         return NewUserNameViewCell.cellHeight
-    case .newUserEmail:
-        return NewUserEmailCell.cellHeight
-    case .newUserGender:
-        return NewUserGenderCell.cellHeight
-    case .newUserBirthdate:
-        return NewUserBirthdateCell.cellHeight
-    case .newUserNationality:
-        return NewUserNationalityCell.cellHeight
-    case .newUserCountry:
-        return NewUserCountryCell.cellHeight
-    case .newUserCoordinates:
-        return NewUserCoordinatesCell.cellHeight
- 
+    func cellNewUserName(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewUserNameViewCell.cellIdentifier, for: indexPath) as? NewUserNameViewCell else {
+            
+            return UITableViewCell()
+        }
+        
+        return cell
     }
-   
-    
-}
+    func cellNewUserEmail(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewUserEmailCell.cellIdentifier, for: indexPath) as? NewUserEmailCell else {
+            
+            return UITableViewCell()
+        }
+        return cell
+    }
+    func cellNewUserGender(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewUserGenderCell.cellIdentifier, for: indexPath) as? NewUserGenderCell else {
+            
+            return UITableViewCell()
+        }
+        return cell
+    }
+    func cellNewUserBirthdate(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewUserBirthdateCell.cellIdentifier, for: indexPath) as? NewUserBirthdateCell else {
+            
+            return UITableViewCell()
+        }
+        return cell
+    }
+    func cellNewUserNationality(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewUserNationalityCell.cellIdentifier, for: indexPath) as? NewUserNationalityCell else {
+            
+            return UITableViewCell()
+        }
+        return cell
+    }
+    func cellNewCountry(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewUserCountryCell.cellIdentifier, for: indexPath) as? NewUserCountryCell else {
+            
+            return UITableViewCell()
+        }
+        return cell
+    }
+    func cellNewUserCoordinates(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewUserCoordinatesCell.cellIdentifier, for: indexPath) as? NewUserCoordinatesCell else {
+            
+            return UITableViewCell()
+        }
+        return cell
+    }
+    //Tamaño de cada celda
+    func tableView(_ tableView: UITableView, heightForRowAt: IndexPath) -> CGFloat{
+        switch cellTypes[heightForRowAt.row]{
+        case .newUserName:
+            return NewUserNameViewCell.cellHeight
+        case .newUserEmail:
+            return NewUserEmailCell.cellHeight
+        case .newUserGender:
+            return NewUserGenderCell.cellHeight
+        case .newUserBirthdate:
+            return NewUserBirthdateCell.cellHeight
+        case .newUserNationality:
+            return NewUserNationalityCell.cellHeight
+        case .newUserCountry:
+            return NewUserCountryCell.cellHeight
+        case .newUserCoordinates:
+            return NewUserCoordinatesCell.cellHeight
+            
+        }
+        
+        
+    }
+  
 }

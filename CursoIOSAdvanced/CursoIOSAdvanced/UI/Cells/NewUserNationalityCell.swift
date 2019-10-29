@@ -13,7 +13,8 @@ class NewUserNationalityCell: UITableViewCell {
    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var choseNationality: UILabel!
         static let cellHeight: CGFloat = 88
-        let nationalityTypes = ["AU", "BR", "CA", "DK", "FI", "FR", "DE", "IR", "IE", "NL", "NZ", "NO", "ES", "CH", "TR", "GB", "US"]
+    let nationalityTypes = Locale.isoRegionCodes
+           
         var nationality: String?
            static let cellIdentifier = String(describing: NewUserNationalityCell.self)
         override func awakeFromNib() {

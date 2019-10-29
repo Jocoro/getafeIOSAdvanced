@@ -78,23 +78,28 @@ extension NewUserCoordinatesCell : UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let latString = latitude.text, let lat = Double(latString) else{
-            latitude.text = "Valid range: -90...90"
+            latitude.text = "0"
+            
             return
         }
         guard let longString = longitude.text, let long = Double(longString) else {
-            longitude.text = "Valid range: -180...180"
+            longitude.text = "0"
             return
         }
         switch (lat, long){
         case (-90...90, -180...180):
             configureMap(latitude: lat, longitude: long)
         case (_, -180...180):
-            latitude.text = "Valid range: -90...90"
+            latitude.text = "0"
+            latitudeLabel.text = "Valid range: -90...90"
         case (-90...90, _):
-            longitude.text = "Valid range: -180...180"
+            longitude.text = "0"
+             longitudeLabel.text = "Valid range: -180...180"
         default:
-            latitude.text = "Valid range: -90...90"
-            longitude.text = "Valid range: -180...180"
+            latitude.text = "0"
+            latitudeLabel.text = "Valid range: -90...90"
+            longitude.text = "0"
+             longitudeLabel.text = "Valid range: -180...180"
         }
         
     }

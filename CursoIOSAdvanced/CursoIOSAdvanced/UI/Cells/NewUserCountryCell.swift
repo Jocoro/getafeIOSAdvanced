@@ -16,7 +16,18 @@ class NewUserCountryCell: UITableViewCell {
         @IBOutlet weak var country : UIPickerView!
     
     var selectedCountry = "Australia"
-        let countries = ["Australia", "Brazil", "Canada", "Denmark", "Finland", "France", "Germany", "Iran", "Ireland", "Netherlands", "New Zealand", "Norway", "Spain", "Switzerland", "Turkey", "United Kingdom", "United States"]
+    //let countries = ["Australia", "Brazil", "Canada", "Denmark", "Finland", "France", "Germany", "Iran", "Ireland", "Netherlands", "New Zealand", "Norway", "Spain", "Switzerland", "Turkey", "United Kingdom", "United States"]
+    let countriesCodes = Locale.isoRegionCodes
+    var countries : [String] {
+        var countries : [String] = []
+    
+    for code in  countriesCodes {
+        let id = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.countryCode.rawValue: code])
+        let name = NSLocale(localeIdentifier: "en").displayName(forKey: NSLocale.Key.identifier, value: id) ?? "Country not found for code: \(code)"
+        countries.append(name)
+    }
+        return countries
+    }
           static let cellHeight: CGFloat = 100
          static let cellIdentifier = String(describing: NewUserCountryCell.self)
         override func awakeFromNib() {
@@ -45,6 +56,7 @@ extension NewUserCountryCell: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
        selectedCountry = countries[row]
     }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return countries[row]
     }
